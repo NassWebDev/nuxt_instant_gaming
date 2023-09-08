@@ -42,6 +42,7 @@
             align-items: center;
             column-gap: 15px;
             z-index: 1;
+            padding-left: 20px;
 
             h1{
                 color: #e8e8e8;
@@ -54,6 +55,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            row-gap: 15px;
 
             ul{
                 display: flex;
@@ -83,6 +85,7 @@
             will-change: transform;
             color: #e8e8e8;
             z-index: 1;
+            padding-right: 20px;
         }
     }
     .imageTrending{
