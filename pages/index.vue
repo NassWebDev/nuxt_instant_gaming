@@ -1,9 +1,9 @@
 <script setup>
-import NavBar from '@/components/NavBar.vue';
+import NavBar from '@/components/NavBar.vue'
 
 useHead({
-  title: "Instant Gaming",
-});
+  title: "Instant Gaming"
+})
 </script>
 
 <template>
@@ -11,7 +11,3 @@ useHead({
     <NavBar />
   </div>
 </template>
-
-<style>
-</style>
-  
