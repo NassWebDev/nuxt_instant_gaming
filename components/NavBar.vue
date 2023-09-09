@@ -46,6 +46,7 @@
 
             h1{
                 color: #e8e8e8;
+                line-height: 1.7rem
             }
         }
 
@@ -86,6 +87,7 @@
             color: #e8e8e8;
             z-index: 1;
             padding-right: 20px;
+            column-gap: 30px;
         }
     }
     .imageTrending{
