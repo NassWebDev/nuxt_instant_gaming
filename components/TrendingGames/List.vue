@@ -75,7 +75,7 @@ const games = ref([
     .trending-games{
         display: flex;
         flex-direction: column;
-        margin: 20px 50px;
+        margin: 20px 100px;
 
         .headline{
             display: flex;
