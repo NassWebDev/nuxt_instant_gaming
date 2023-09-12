@@ -12,7 +12,7 @@
 
 <script setup>
 const props = defineProps({
-  game: Array,
+  game: Object,
 });
 </script>
 
