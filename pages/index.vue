@@ -1,8 +1,7 @@
 <script setup>
-import NavBar from '@/components/NavBar.vue'
 import TrendingGames from '@/components/TrendingGames.vue';
-import TrendingGamesList from '@/components/TrendingGames/List.vue';
-import PreordersGamesList from '@/components/PreordersGames/List.vue';
+import BestRatingGamesList from '@/components/BestRatingGames/List.vue';
+import NextReleaseGamesList from '@/components/NextReleaseGames/List.vue';
 
 useHead({
   title: "Instant Gaming"
@@ -10,19 +9,9 @@ useHead({
 </script>
 
 <template>
-  <div class="main-container">
-    <NavBar />
+  <div>
     <TrendingGames />
-    <TrendingGamesList />
-    <PreordersGamesList />
+    <BestRatingGamesList />
+    <NextReleaseGamesList />
   </div>
 </template>
-
-<style>
-  .main-container{
-    background-color: #272727;
-    display: flex;
-    flex-direction: column;
-    row-gap: 15px;
-  }
-</style>
