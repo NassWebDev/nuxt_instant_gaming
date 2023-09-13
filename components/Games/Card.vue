@@ -1,11 +1,8 @@
 <template>
-    <img src="@/assets/images/rdr.jpg" :alt=game.name>
-        <div class="game-info">
-            <p>
-            {{ game.name }}
-        </p>
+    <img :src=game?.background_image :alt=game?.name>
+    <div class="game-info">
         <p>
-            {{ game.price }}
+           {{ game?.name }}
         </p>
     </div>
 </template>
@@ -17,13 +14,4 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-    .game{
-        width: calc(33.33333% - 30px);
-        
-        a{
-            width: 100%;
-            background-image: url("@/assets/images/rdr.jpg");
-            background-size: cover;
-        }
-    }
 </style>
