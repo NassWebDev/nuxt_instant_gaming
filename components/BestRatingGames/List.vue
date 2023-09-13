@@ -22,6 +22,16 @@
 <script setup>
 import GamesCard from '@/components/Games/Card.vue';
 
+const {data: allgames} = await useFetch("https://api.igdb.com/v4/games", {
+    method: "POST",
+    headers:{
+        "Client-ID": "y19n2sixh4hcbrzxn633dx98z671qk",
+        "Authorization": "Bearer us2bxckqupcgkxwm3i1yo7la17x3rd"
+    }
+})
+
+console.log(allgames.value);
+
 const games = ref([
     {
         name: "Red Dead Redemption 2",
