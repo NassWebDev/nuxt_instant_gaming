@@ -15,5 +15,8 @@
     "nuxt-icon": "^0.5.0",
     "sass": "^1.65.1",
     "sass-loader": "^13.3.2"
+  },
+  "dependencies": {
+    "vue-awesome-paginate": "^1.1.46"
   }
 }
