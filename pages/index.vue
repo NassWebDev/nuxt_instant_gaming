@@ -11,7 +11,27 @@ useHead({
 <template>
   <div>
     <TrendingGames />
-    <BestRatingGamesList />
-    <NextReleaseGamesList />
+    <div>
+      <div class="headline">
+            <h3>
+                Populaires
+            </h3>
+            <NuxtLink to="/populaires">
+                Tout Voir
+            </NuxtLink>
+        </div>
+      <BestRatingGamesList :number_of_games="9"/>
+    </div>
+    <div>
+      <div class="headline">
+            <h3>
+                Prochaines Sorties
+            </h3>
+            <NuxtLink to="/next-release">
+                Tout Voir
+            </NuxtLink>
+        </div>
+      <NextReleaseGamesList />
+    </div>
   </div>
 </template>
