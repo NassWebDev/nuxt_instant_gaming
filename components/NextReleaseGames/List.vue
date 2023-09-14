@@ -8,7 +8,7 @@
                 Tout Voir
             </NuxtLink>
         </div>
-        <ul>
+        <ul class="list-games">
             <li v-for="game in allgames.results" :id="game?.id">
                 <GamesCard
                 :key="game?.id"
