@@ -1,24 +1,15 @@
 <template>
     <header>
-        <!-- <div class="logo">
-            <Icon name="vscode-icons:file-type-nuxt" size="5em"/>
-            <h1>
-                Instant Gaming
-            </h1>
-        </div> -->
-        <NuxtLink to="/">
+        <NuxtLink class="logo" to="/">
         </NuxtLink>
         <div class="nav-middle">
             <ul>
-                <li>
+                <NuxtLink to="/tendances"> 
                     Tendances
-                </li>
-                <li>
-                    Précommandes
-                </li>
-                <li>
+                </NuxtLink>
+                <NuxtLink to="/next-release">
                     Prochaines sorties
-                </li>
+                </NuxtLink>
             </ul>
             <input type="text">
         </div>
@@ -36,29 +27,15 @@
         justify-content: space-between;
         position: absolute;
         align-items: center;
+        padding: 10px 20px;
 
-        // .logo{
-        //     width: 200px;
-        //     display: flex;
-        //     align-items: center;
-        //     column-gap: 15px;
-        //     z-index: 1;
-        //     padding-left: 20px;
-
-        //     h1{
-        //         color: #e8e8e8;
-        //         line-height: 1.7rem
-        //     }
-        // }
-
-        a{
+        .logo{
             z-index: 9999;
             width: 150px;
             height: 40px;
             background-image: url("../assets/images/logo-horizontal.svg");
             background-size: 100%;
             background-repeat: no-repeat;
-            margin-left: 20px;
         }
 
         .nav-middle{
@@ -73,10 +50,9 @@
                 display: flex;
                 column-gap: 50px;
 
-                li{
-                    list-style: none;
+                a{
                     color: #e8e8e8;
-                    z-index: 1;
+                    text-decoration: none;
                 }
             }
 
@@ -97,7 +73,7 @@
             will-change: transform;
             color: #e8e8e8;
             z-index: 1;
-            margin-right: 20px;
+            // margin-right: 20px;
             column-gap: 30px;
         }
     }
