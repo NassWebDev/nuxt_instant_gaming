@@ -1,9 +1,12 @@
 <template>
     <div class="games">
-        <BestRatingGamesList :number_of_games="30"/>
+      <h2>
+        Jeux Populaires
+      </h2>
+        <GamesList :number_of_games="21" :currentPage="currentPage"/>
         <vue-awesome-paginate
-            :total-items="12600"
-            :items-per-page="props.number_of_games"
+            :total-items="10000"
+            :items-per-page="21"
             :max-pages-shown="3"
             v-model="currentPage"
             :on-click="onClickHandler"
@@ -12,43 +15,18 @@
 </template>
 
 <script setup>
-
-import BestRatingGamesList from '@/components/BestRatingGames/List.vue';
+import GamesList from '@/components/Games/List.vue';
 
 const currentPage = ref(1);
 
 const onClickHandler = (page) => {
     currentPage.value = page;
+    console.log(currentPage.value);
+    window.scrollTo(0, 0);
 }
 </script>
 
 <style lang="scss">
 @import "@/assets/styles/list.scss";
-.games{
-  margin-top: 150px;
-}
-.pagination-container {
-    display: flex;
-    column-gap: 10px;
-  }
-  .paginate-buttons {
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
-    cursor: pointer;
-    background-color: rgb(242, 242, 242);
-    border: 1px solid rgb(217, 217, 217);
-    color: black;
-  }
-  .paginate-buttons:hover {
-    background-color: #d8d8d8;
-  }
-  .active-page {
-    background-color: #3498db;
-    border: 1px solid #3498db;
-    color: white;
-  }
-  .active-page:hover {
-    background-color: #2988c8;
-  }
+@import "@/assets/styles/pagination.css";
 </style>
