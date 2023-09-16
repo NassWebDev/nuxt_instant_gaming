@@ -1,0 +1,37 @@
+h2{
+    margin-top: 100px;
+    color: #d8d8d8;
+}
+
+.pagination-container {
+    display: flex;
+    column-gap: 10px;
+}
+
+.paginate-buttons {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+
+.paginate-buttons:hover {
+    background-color: #ff5400;
+}
+
+.active-page {
+    border: 1px solid #999;
+    color: #999;
+}
+
+.active-page:hover {
+    background-color: transparent;
+}
+    
+.starting-breakpoint-button:hover, .ending-breakpoint-button:hover {
+    background-color: transparent;
+    cursor: default;
+}
