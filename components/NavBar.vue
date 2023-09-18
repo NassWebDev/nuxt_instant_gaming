@@ -4,7 +4,7 @@
         </NuxtLink>
         <div class="nav-middle">
             <ul>
-                <NuxtLink to="/tendances"> 
+                <NuxtLink to="/populaires"> 
                     Tendances
                 </NuxtLink>
                 <NuxtLink to="/next-release">
@@ -53,6 +53,7 @@
                 a{
                     color: #e8e8e8;
                     text-decoration: none;
+                    z-index: 1;
                 }
             }
 
@@ -73,7 +74,6 @@
             will-change: transform;
             color: #e8e8e8;
             z-index: 1;
-            // margin-right: 20px;
             column-gap: 30px;
         }
     }
