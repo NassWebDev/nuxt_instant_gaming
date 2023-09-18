@@ -18,7 +18,8 @@ import LoadingAnim from '@/components/LoadingAnim.vue';
 const props = defineProps({
     number_of_games: Number,
     ordering: String,
-    currentPage: Number
+    currentPage: Number,
+    dates: String
 })
 
 const currentPage = toRef(props, 'currentPage')
@@ -33,7 +34,8 @@ const { data: allgames, pending } = await useFetch("https://api.rawg.io/api/game
         key: import.meta.env.VITE_API_KEY,
         page: currentPage,
         page_size: props?.number_of_games,
-        ordering: props?.ordering
+        ordering: props?.ordering,
+        dates: props?.dates
     },
     watch:[currentPage]
 })
