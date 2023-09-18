@@ -4,9 +4,9 @@
       Prochaines Sorties
     </h2>
     <div class="list">
-      <GamesList :number_of_games="21" :currentPage="currentPage" :ordering="'released'"/>
+      <GamesList :number_of_games="21" :currentPage="currentPage" :ordering="'released'" :dates="formattedDate + ',' + formattedFutureDate"/>
       <vue-awesome-paginate
-          :total-items="10000"
+          :total-items="190"
           :items-per-page="21"
           :max-pages-shown="3"
           v-model="currentPage"
@@ -18,6 +18,10 @@
 
 <script setup>
 import GamesList from '@/components/Games/List.vue';
+
+definePageMeta({
+  layout: "custom"
+})
 
 const currentPage = ref(1);
 
