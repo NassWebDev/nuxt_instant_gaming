@@ -9,7 +9,6 @@ useHead({
 
 <template>
   <div>
-    <TrendingGames />
     <div class="games">
       <div class="headline">
         <h3>
@@ -38,6 +37,7 @@ useHead({
         <GamesList 
           :number_of_games="9"
           :ordering="'released'"
+          :dates="formattedDate + ',' + formattedFutureDate"
         />
       </div>
     </div>
