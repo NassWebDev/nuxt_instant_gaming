@@ -31,6 +31,11 @@
             </div>
         </div>
     </div>
+    <div class="description">
+      <p>
+        
+      </p>
+    </div>
 </template>
 
 <style lang="scss">
@@ -45,12 +50,12 @@
         column-gap: 60px;
 
         img{
-            width: 700px;
+            width: 600px;
             aspect-ratio: 16/9;
         }
 
         .details{
-            min-width: 700px;
+            min-width: 600px;
             color: #fff;
             border: 1px solid red;
             display: flex;
