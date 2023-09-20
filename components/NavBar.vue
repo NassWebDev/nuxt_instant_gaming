@@ -5,7 +5,7 @@
         <div class="nav-middle">
             <ul>
                 <NuxtLink to="/populaires"> 
-                    Tendances
+                    Populaires
                 </NuxtLink>
                 <NuxtLink to="/next-release">
                     Prochaines sorties
