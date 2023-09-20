@@ -6,7 +6,7 @@
     <div class="list">
       <GamesList :number_of_games="21" :currentPage="currentPage" :ordering="'released'" :dates="formattedDate + ',' + formattedFutureDate"/>
       <vue-awesome-paginate
-          :total-items="190"
+          :total-items="150"
           :items-per-page="21"
           :max-pages-shown="3"
           v-model="currentPage"
