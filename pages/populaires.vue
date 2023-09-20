@@ -27,7 +27,6 @@ const currentPage = ref(1);
 
 const onClickHandler = (page) => {
     currentPage.value = page;
-    console.log(currentPage.value);
     window.scrollTo(0, 0);
 }
 </script>
