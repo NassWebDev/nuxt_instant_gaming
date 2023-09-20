@@ -46,7 +46,6 @@
             <p>America, 1899. The end of the wild west era has begun as lawmen hunt down the last remaining outlaw gangs. Those who will not surrender or succumb are killed. </p>\n<p>After a robbery goes badly wrong in the western town of Blackwater, Arthur Morgan and the Van der Linde gang are forced to flee. With federal agents and the best bounty hunters in the nation massing on their heels, the gang must rob, steal and fight their way across the rugged heartland of America in order to survive. As deepening internal divisions threaten to tear the gang apart, Arthur must make a choice between his own ideals and loyalty to the gang who raised him.</p>\n<p>From the creators of Grand Theft Auto V and Red Dead Redemption, Red Dead Redemption 2 is an epic tale of life in America at the dawn of the modern age.</p>
           </div>
         </div>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Dw_oH5oiUSE" frameborder="0" allowfullscreen></iframe>
     </div>
 </template>
 
@@ -54,16 +53,16 @@
 onMounted(() => {
   const descriptionContent = document.querySelector('.description-content');
   const descriptionWithN = descriptionContent.textContent;
-
+  console.log(descriptionWithN);
   const descriptionWithoutN = descriptionWithN.replace(/\n/g, '');
-
+  console.log(descriptionWithoutN);
   descriptionContent.textContent = descriptionWithoutN;
 })
 </script>
 
 <style lang="scss">
 .details-container {
-  padding: 100px;
+  padding: 100px 300px;
   color: #d4d4d4;
   position: relative;
   top: -250px;
@@ -77,6 +76,7 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     column-gap: 60px;
+    flex-wrap: wrap;
 
     img{
       width: 600px;
