@@ -41,7 +41,7 @@
             <NuxtLink class="cart">
                 <Icon name="solar:cart-large-4-outline" size="1.8em"/>
             </NuxtLink>
-            <NuxtLink class="buy" :to="game?.website">
+            <NuxtLink class="buy" :to="game?.website" v-if="game?.website">
                 Buy Now
             </NuxtLink>
             </div>
