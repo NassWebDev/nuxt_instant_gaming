@@ -1,8 +1,8 @@
 <template>
     <ul class="list-games">
-        <p v-if="pending">
+        <div v-if="pending">
             <LoadingAnim/>
-        </p>
+        </div>
         <li v-else v-for="game in toRaw(allgames?.results)" :key="game?.id">
             <GamesCard
             :game="game"
