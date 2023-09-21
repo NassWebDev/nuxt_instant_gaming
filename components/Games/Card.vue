@@ -1,7 +1,7 @@
 <template>
-    <div v-if="game?.background_image">
+    <NuxtLink v-if="game?.background_image" >
       <img :src=game?.background_image :alt=game?.name>
-    </div>
+    </NuxtLink>
     <div v-else class="no-image">
       <p>
         No Image
