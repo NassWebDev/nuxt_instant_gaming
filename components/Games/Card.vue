@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink v-if="game?.background_image" >
+    <NuxtLink v-if="game?.background_image" :to="`/game/${game?.slug}`">
       <img :src=game?.background_image :alt=game?.name>
     </NuxtLink>
     <div v-else class="no-image">
