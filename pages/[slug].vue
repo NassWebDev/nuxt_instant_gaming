@@ -1,6 +1,6 @@
 <template>
     <div class="details-container">
-        <div class="banner">
+        <!-- <div class="banner">
             <img src="@/assets/images/rdr.jpg" alt="">
             <div class="details">
               <Icon class="heart" name="ph:heart" size="2em"/>
@@ -46,6 +46,32 @@
             <p>America, 1899. The end of the wild west era has begun as lawmen hunt down the last remaining outlaw gangs. Those who will not surrender or succumb are killed. </p>\n<p>After a robbery goes badly wrong in the western town of Blackwater, Arthur Morgan and the Van der Linde gang are forced to flee. With federal agents and the best bounty hunters in the nation massing on their heels, the gang must rob, steal and fight their way across the rugged heartland of America in order to survive. As deepening internal divisions threaten to tear the gang apart, Arthur must make a choice between his own ideals and loyalty to the gang who raised him.</p>\n<p>From the creators of Grand Theft Auto V and Red Dead Redemption, Red Dead Redemption 2 is an epic tale of life in America at the dawn of the modern age.</p>
           </div>
         </div>
+        <div class="gallery">
+          <p class="gallery-title">
+            Gallery:
+          </p>
+          <div class="list">
+            <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+            <div class="thumber">
+              <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+              <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+              <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+              <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+            </div>
+          </div>   
+        </div> -->
+        <div class="images-container">
+          <img class="image-selected" src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+            <div class="thumbs-container">
+              <div class="thumber">
+                <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+                <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+                <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+                <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+                <img src="https://media.rawg.io/media/screenshots/7b8/7b8895a23e8ca0dbd9e1ba24696579d9.jpg" alt="">
+              </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -62,7 +88,7 @@ onMounted(() => {
 
 <style lang="scss">
 .details-container {
-  padding: 100px 300px;
+  padding: 100px;
   color: #d4d4d4;
   position: relative;
   top: -250px;
@@ -200,6 +226,70 @@ onMounted(() => {
 
     .description-title{
       font-size: 18px;
+    }
+  }
+
+  .gallery{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    .list{
+      display: flex;
+      column-gap: 20px;
+
+      img{
+        width: 50%;
+        border-radius: 8px;
+      }
+
+      .thumber{
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+        gap: 20px;
+
+        img{
+          width: calc(50% - 30px);
+        }
+      }
+    }
+  }
+
+  .images-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    outline: none;
+    overflow: auto;
+    padding: 15px;
+    background-color: #323232;
+
+    .thumbs-container{
+      display: flex;
+      justify-content: center;
+
+      .thumber{
+        width: 100%!important;
+        max-width: 800px;
+        display: flex;
+        z-index: 1;
+        justify-content: center;
+        align-items: center;
+
+        img{
+          border-radius: 7px;
+          width: 20%;
+          margin: 0 5px;
+          object-fit: cover;
+        }
+      }
     }
   }
 }
