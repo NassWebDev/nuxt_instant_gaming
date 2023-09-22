@@ -23,7 +23,8 @@ const props = defineProps({
     currentPage: Number,
     dates: String,
     genre: String,
-    tags: String
+    tags: String,
+    developer: String
 })
 
 const currentPage = toRef(props, 'currentPage');
@@ -41,7 +42,8 @@ const { data: allgames, pending } = await useFetch("https://api.rawg.io/api/game
         ordering: props?.ordering,
         dates: props?.dates,
         genres: props?.genre,
-        tags: props?.tags
+        tags: props?.tags,
+        developers: props?.developer
     },
     watch:[currentPage]
 })
