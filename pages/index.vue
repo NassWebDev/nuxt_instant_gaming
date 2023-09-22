@@ -9,6 +9,7 @@ useHead({
 
 <template>
   <div>
+    <TrendingGames />
     <div class="games">
       <div class="headline">
         <h3>
