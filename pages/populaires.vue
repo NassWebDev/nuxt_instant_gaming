@@ -6,13 +6,15 @@
         <div class="list">
           <GamesList :number_of_games="21" :currentPage="currentPage"/>
           <vue-awesome-paginate
-              :total-items="10000"
+              :total-items="count"
               :items-per-page="21"
               :max-pages-shown="3"
               v-model="currentPage"
               :on-click="onClickHandler"
+              @total-items="getCount"
           />
         </div>
+        <p>Total items: {{ count }}</p>
     </div>
 </template>
 
@@ -24,6 +26,14 @@ definePageMeta({
 })
 
 const currentPage = ref(1);
+
+const count = ref(0);
+
+const getCount = ((value) => {
+  count.value = value;
+})
+
+console.log(count.value);
 
 const onClickHandler = (page) => {
     currentPage.value = page;
