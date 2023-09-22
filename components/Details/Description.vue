@@ -11,9 +11,11 @@
             User tags:
             </p>
             <ul class="list-tags">
-            <li v-for="tag in game?.tags" :key="tag">
-                {{ tag.name }}
-            </li>
+              <li v-for="tag in game?.tags" :key="tag">
+                  <NuxtLink :to="`/tags/${tag.slug}`">
+                    {{ tag.name }}
+                  </NuxtLink>
+              </li>
             </ul>
         </div>
     </div>
@@ -52,11 +54,19 @@ const props = defineProps({
             transition: all 0.15s ease;
             text-transform: uppercase;
 
+            a{
+              text-decoration: none;
+              color: #999;
+
+              &:hover{
+                color: #c5c5c5;
+              }
+            }
+
             &:hover{
               border-color: #c5c5c5;
-              color: #c5c5c5;
               cursor: pointer;
-            }
+            }  
           }
         }
       }
