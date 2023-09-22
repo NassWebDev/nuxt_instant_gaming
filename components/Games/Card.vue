@@ -1,12 +1,12 @@
 <template>
-    <NuxtLink v-if="game?.background_image" :to="`/game/${game?.slug}`">
-      <img :src=game?.background_image :alt=game?.name>
-    </NuxtLink>
-    <div v-else class="no-image">
+    <NuxtLink :to="`/game/${game?.slug}`">
+      <img v-if="game?.background_image" :src=game?.background_image :alt=game?.name>
+      <div v-else class="no-image">
       <p>
         No Image
       </p>
     </div>
+    </NuxtLink>
     <div class="game-info">
         <p>
            {{ game?.name }}
