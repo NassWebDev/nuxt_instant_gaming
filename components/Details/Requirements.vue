@@ -1,12 +1,15 @@
 <template>
-    <div class="requirements-container" v-if="formattedMinimum || formattedRecommended">
+    <div class="requirements-container">
         <h2>
             Requirements
         </h2>
-        <div class="requirements">
+        <div v-if="game?.hasPcPlatform" class="requirements">
             <p v-html="formattedMinimum"></p>
             <p v-html="formattedRecommended"></p>
         </div>
+        <p v-else>
+            N/A
+        </p>
     </div>
 </template>
 

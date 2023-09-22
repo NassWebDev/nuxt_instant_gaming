@@ -3,20 +3,26 @@
         <h2 class="description-title">
             Description:
         </h2>
-        <p>
+        <p v-if="game?.description">
             {{ game?.description }}
+        </p>
+        <p v-else>
+            N/A
         </p>
         <div class="tags">
             <p>
             User tags:
             </p>
-            <ul class="list-tags">
+            <ul v-if="game?.tags.length > 0" class="list-tags">
               <li v-for="tag in game?.tags" :key="tag">
                   <NuxtLink :to="`/tags/${tag.slug}`">
                     {{ tag.name }}
                   </NuxtLink>
               </li>
             </ul>
+            <p v-else>
+                N/A
+            </p>
         </div>
     </div>
 </template>
@@ -36,6 +42,7 @@ const props = defineProps({
 
       .tags{
         display: flex;
+        column-gap: 10px;
 
         .list-tags{
           list-style: none;
