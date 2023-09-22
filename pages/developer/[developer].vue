@@ -1,10 +1,10 @@
 <template>
     <div class="games">
       <h2>
-        {{transformedTag}}
+        {{transformedDeveloper}}
       </h2>
       <div class="list">
-        <GamesList :number_of_games="21" :currentPage="currentPage" :tags="tagUser" @total-items="getCount"/>
+        <GamesList :number_of_games="21" :currentPage="currentPage" :developer="developer" @total-items="getCount"/>
         <vue-awesome-paginate
             :total-items="count"
             :items-per-page="21"
@@ -21,13 +21,13 @@
   
   const route = useRoute();
   
-  console.log(route.params.tag);
+  console.log(route.params.developer);
   
-  const tagUser = ref(route.params.tag)
+  const developer = ref(route.params.developer)
   
-  const transformedTag = tagUser.value.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+  const transformedDeveloper = developer.value.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
   
-  console.log(toRaw(tagUser.value));
+  console.log(toRaw(developer.value));
   
   definePageMeta({
     layout: "custom"
@@ -37,13 +37,12 @@
 
   const count = ref(0);
 
-  const getCount = ((value) => {
+    const getCount = ((value) => {
     count.value = value;
-  })
+    })
   
   const onClickHandler = (page) => {
     currentPage.value = page;
-    console.log(currentPage.value);
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

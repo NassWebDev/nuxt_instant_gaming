@@ -4,9 +4,9 @@
       {{transformedGenre}}
     </h2>
     <div class="list">
-      <GamesList :number_of_games="21" :currentPage="currentPage" :genre="genreGame"/>
+      <GamesList :number_of_games="21" :currentPage="currentPage" :genre="genreGame" @total-items="getCount"/>
       <vue-awesome-paginate
-          :total-items="10000"
+          :total-items="count"
           :items-per-page="21"
           :max-pages-shown="3"
           v-model="currentPage"
@@ -34,6 +34,12 @@ definePageMeta({
 })
 
 const currentPage = ref(1);
+
+const count = ref(0);
+
+const getCount = ((value) => {
+  count.value = value;
+})
 
 const onClickHandler = (page) => {
   currentPage.value = page;
