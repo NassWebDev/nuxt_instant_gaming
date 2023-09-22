@@ -1,5 +1,10 @@
 <template>
-    <div class="imageTrending" :style="{ backgroundImage: 'url(' + image + ')' }">
+    <div v-if="image" class="imageTrending" :style="{ backgroundImage: 'url(' + image + ')' }">
+    </div>
+    <div v-else class="no-image">
+      <p>
+        No Image
+      </p>
     </div>
 </template>
 
@@ -44,10 +49,9 @@ else{
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .imageTrending{
         height: 80vh;
-        // background-image: url("@/assets/images/rdr.jpg");
         background-size: cover;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
 
@@ -61,6 +65,21 @@ else{
             height: 20%;
             background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.8));
             pointer-events: none;
+        }
+    }
+
+    .no-image{
+        height: 80vh;
+        border-radius: 8px;
+        aspect-ratio: 16/9;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+                    
+        p{
+            color: #fff;
         }
     }
 </style>

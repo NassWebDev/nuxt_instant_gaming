@@ -1,43 +1,52 @@
 <template>
     <div class="banner">
-        <img :src="game?.image" alt="">
+        <img v-if="game?.image" :src="game?.image" alt="">
+        <div v-else class="no-image">
+          <p>
+            No Image
+          </p>
+        </div>
         <div class="details-game">
             <Icon class="heart" name="ph:heart" size="2em"/>
             <p class="title">
                 {{ game?.name }}
             </p>
             <div class="small-details">
-            <div class="developer">
-                <p>Developer(s):</p>
-                <p v-for="developer in game?.developers" :key="developer" v-if="game?.developers.length !== 0">
-                    {{ developer.name }}
-                </p>
-                <p v-else>
-                    N/A
-                </p>
-            </div>
-            <div class="release-date">
-                <p>Release Date:</p>
-                <p v-if="game?.releaseDate">
-                    {{ game?.releaseDate }}
-                </p>
-                <p v-else>
-                    N/A
-                </p>
-            </div>
-            <div class="genres">
-                <p>Genres:</p>
-                <ul v-if="game?.genres.length !== 0">
-                    <li v-for="genre in game?.genres" :key="genre.id">
-                        <NuxtLink :to="`/genre/${genre.slug}`">
-                          {{ genre.name }}
-                        </NuxtLink>
+              <div class="developer">
+                  <p>Developer(s):</p>
+                  <ul v-if="game?.developers.length !== 0" class="list-developers">
+                    <li v-for="developer in game?.developers" :key="developer.id">
+                      <NuxtLink :to="`/developer/${developer.slug}`">
+                        {{ developer.name }}
+                      </NuxtLink>
                     </li>
-                </ul>
-                <p v-else>
-                    N/A
-                </p>
-            </div>
+                  </ul>
+                  <p v-else>
+                      N/A
+                  </p>
+              </div>
+              <div class="release-date">
+                  <p>Release Date:</p>
+                  <p v-if="game?.releaseDate">
+                      {{ game?.releaseDate }}
+                  </p>
+                  <p v-else>
+                      N/A
+                  </p>
+              </div>
+              <div class="genres">
+                  <p>Genres:</p>
+                  <ul v-if="game?.genres.length !== 0">
+                      <li v-for="genre in game?.genres" :key="genre.id">
+                          <NuxtLink :to="`/genre/${genre.slug}`">
+                            {{ genre.name }}
+                          </NuxtLink>
+                      </li>
+                  </ul>
+                  <p v-else>
+                      N/A
+                  </p>
+              </div>
             </div>
             <div class="buy-or-cart">
             <NuxtLink class="cart">
@@ -70,6 +79,16 @@ const props = defineProps({
         width: 600px;
         aspect-ratio: 16/9;
         border-radius: 10px;
+      }
+
+      .no-image{
+        width: 600px;
+        aspect-ratio: 16/9;
+        border-radius: 10px;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .details-game{
@@ -109,6 +128,22 @@ const props = defineProps({
             display: flex;
             justify-content: center;
             column-gap: 5px;
+
+            .list-developers{
+              
+              li{
+                list-style: none;
+
+                a{
+                  text-decoration: none;
+                  color: #999;
+
+                    &:hover{
+                      color: #c5c5c5;
+                    }
+                }
+              }
+            }
           }
 
           .release-date{

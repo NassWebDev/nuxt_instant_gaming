@@ -3,19 +3,22 @@
         <h2 class="gallery-title">
             Gallery:
         </h2>
-        <ul class="list">
+        <ul class="list" v-if="game?.allImages.length > 0">
             <li v-for="(image, index) in game?.allImages" :key="index" @click="showCarousel(index)">
                 <img :src="image.image" alt="">
             </li>
         </ul>
+        <p v-else>
+            No Image
+        </p>
         <Teleport to="body">
-            <div class="carousel-images" :style="{ display: openCarousel ? 'block' : 'none' }">
+            <div v-if="game?.allImages" class="carousel-images" :style="{ display: openCarousel ? 'block' : 'none' }">
               <div class="close">
                 <Icon name="ph:x" size="2em" @click="closeCarousel" />
               </div>
               <div class="images-container">
                 <Carousel v-model="currentSlide">
-                  <Slide v-for="(image, index) in game?.allImages" :key="image.id">
+                  <Slide v-for="image in game?.allImages" :key="image.id">
                     <img :src="image.image" alt="" class="image-selected">
                   </Slide>
                 </Carousel>
@@ -80,19 +83,19 @@ const closeCarousel = (() => {
       }
     }
     .carousel-images {
-    width: 100vw;
-    position: relative;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 999;
-    display: none;
+      width: 100vw;
+      position: relative;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 99999;
+      overflow-y: auto;      
 
-    &.active{
-      display: block;
-    }
+      &.active{
+        display: block;
+      }
 
     .close{
       position: absolute;
