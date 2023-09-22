@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
       <NavBar />
-      <TrendingGames />
+      <!-- <TrendingGames /> -->
       <slot />
   </div>
 </template>
