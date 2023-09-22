@@ -1,5 +1,5 @@
 <template>
-    <div class="requirements-container">
+    <div class="requirements-container" v-if="formattedMinimum || formattedRecommended">
         <h2>
             Requirements
         </h2>
