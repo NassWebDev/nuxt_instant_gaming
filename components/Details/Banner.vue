@@ -29,7 +29,9 @@
                 <p>Genres:</p>
                 <ul v-if="game?.genres.length !== 0">
                     <li v-for="genre in game?.genres" :key="genre.id">
-                        {{ genre.name }}
+                        <NuxtLink :to="`/genre/${genre.slug}`">
+                          {{ genre.name }}
+                        </NuxtLink>
                     </li>
                 </ul>
                 <p v-else>
@@ -133,11 +135,19 @@ const props = defineProps({
                 border-radius: 5px;
                 transition: all 0.150s ease;
                 
+                a{
+                  text-decoration: none;
+                  color: #999;
+
+                    &:hover{
+                      color: #c5c5c5;
+                    }
+                }
+
                 &:hover{
                   border-color: #c5c5c5;
-                  color: #c5c5c5;
                   cursor: pointer;
-                }
+                }      
               }
             }
           }
@@ -176,7 +186,8 @@ const props = defineProps({
             font-size: 1.3em;
             font-weight: 600;
             cursor: pointer;
-            text-decoration: none;
+            color: #d4d4d4;
+            text-decoration: none;  
 
             &:visited{
                 color:#d4d4d4;
