@@ -1,4 +1,5 @@
 <template>
+  <TrendingGames /> 
       <div class="details-container">
         <DetailsBanner :game="gameInfo"/>
         <DetailsDescription :game="gameInfo"/>
@@ -14,7 +15,6 @@ import DetailsGallery from '@/components/Details/Gallery.vue';
 import DetailsRequirements from '@/components/Details/Requirements.vue';
 
 const route = useRoute();
-console.log(route.params.slug);
 
 const { data: game } = await useFetch(`https://api.rawg.io/api/games/${route.params.slug}`, {
     method: "GET",
@@ -59,7 +59,7 @@ const gameInfo = reactive({
 
 <style lang="scss">
   .details-container {
-    padding: 100px 17%;
+    padding: 100px 10%;
     color: #d4d4d4;
     position: relative;
     top: -250px;
