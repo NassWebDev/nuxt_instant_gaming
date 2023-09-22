@@ -15,7 +15,7 @@
               </div>
               <div class="images-container">
                 <Carousel v-model="currentSlide">
-                  <Slide v-for="(image, index) in game?.allImages" :key="index">
+                  <Slide v-for="(image, index) in game?.allImages" :key="image.id">
                     <img :src="image.image" alt="" class="image-selected">
                   </Slide>
                 </Carousel>
@@ -73,17 +73,8 @@ const closeCarousel = (() => {
           img{
             width: 100%;
             border-radius: 8px;
-          }
-        }
-
-        .thumber{
-          display: flex;
-          flex-wrap: wrap;
-          width: 50%;
-          gap: 20px;
-
-          img{
-            width: calc(50% - 30px);
+            aspect-ratio: 16/9;
+            cursor: pointer;
           }
         }
       }
@@ -133,6 +124,7 @@ const closeCarousel = (() => {
         width: 70%;
         border-radius: 10px;
         object-fit: cover;
+        aspect-ratio: 16/9;
       }
 
       .thumbs-container{
@@ -159,6 +151,8 @@ const closeCarousel = (() => {
                 margin: 0 5px;
                 object-fit: cover;
                 transition: all 0.150s ease;
+                aspect-ratio: 16/9;
+                cursor: pointer;
 
                 &.active {
                   transform: scale(1.1);
