@@ -38,7 +38,14 @@ const { data: gameImages } = await useFetch(`https://api.rawg.io/api/games/${rou
     }
 })
 
-const pcRequirements = toRaw(game.value?.platforms?.find(platform => platform.platform.slug === 'pc').requirements);
+console.log(game.value);
+
+const hasPcPlatform = toRaw(game.value.platforms.find(platform => platform.platform.slug === 'pc'));
+
+console.log(hasPcPlatform);
+const pcRequirements = toRaw(hasPcPlatform.requirements);
+
+
 
 const gameInfo = reactive({
   name: toRaw(game.value?.name),
@@ -50,11 +57,16 @@ const gameInfo = reactive({
   description: toRaw(game.value?.description_raw),
   tags: toRaw(game.value?.tags),
   genres: toRaw(game.value?.genres),
-  requirements: {
+  hasPcPlatform: hasPcPlatform,
+  requirements: {}
+})
+
+if (hasPcPlatform) {
+  gameInfo.requirements = {
     minimum: toRaw(pcRequirements.minimum),
     recommended: toRaw(pcRequirements.recommended)
-  }
-})
+  };
+}
 </script>
 
 <style lang="scss">
