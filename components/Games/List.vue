@@ -15,14 +15,18 @@
 import GamesCard from '@/components/Games/Card.vue';
 import LoadingAnim from '@/components/LoadingAnim.vue';
 
+const emit = defineEmits(['total-items']);
+
 const props = defineProps({
     number_of_games: Number,
     ordering: String,
     currentPage: Number,
-    dates: String
+    dates: String,
+    genre: String,
+    tags: String
 })
 
-const currentPage = toRef(props, 'currentPage')
+const currentPage = toRef(props, 'currentPage');
 
 const { data: allgames, pending } = await useFetch("https://api.rawg.io/api/games", {
     method: "GET",
@@ -35,10 +39,16 @@ const { data: allgames, pending } = await useFetch("https://api.rawg.io/api/game
         page: currentPage,
         page_size: props?.number_of_games,
         ordering: props?.ordering,
-        dates: props?.dates
+        dates: props?.dates,
+        genres: props?.genre,
+        tags: props?.tags
     },
     watch:[currentPage]
 })
+
+if (allgames.value) {
+    emit('total-items', allgames.value?.count);
+}
 </script>
 
 <style lang="scss">
