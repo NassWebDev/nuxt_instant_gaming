@@ -1,9 +1,9 @@
 <template>
-    <div class="requirements-container">
+    <div class="requirements-container" v-if="game?.hasPcPlatform">
         <h2>
             Requirements
         </h2>
-        <div v-if="game?.hasPcPlatform && formattedMinimum || formattedRecommended" class="requirements">
+        <div v-if="(formattedMinimum || formattedRecommended)" class="requirements">
             <p v-html="formattedMinimum"></p>
             <p v-html="formattedRecommended"></p>
         </div>
@@ -17,8 +17,6 @@
 const props = defineProps({
     game: Object
 })
-
-console.log(props?.game?.requirements)
 
 const minimum = props?.game?.requirements?.minimum;
 const formattedMinimum = minimum?.replace(/\n/g, "<br>");
