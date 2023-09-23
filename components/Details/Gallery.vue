@@ -11,8 +11,8 @@
         <p v-else>
             No Image
         </p>
-        <Teleport to="body">
-            <div v-if="game?.allImages" class="carousel-images" :style="{ display: openCarousel ? 'block' : 'none' }">
+        <!-- <Teleport to="body"> -->
+            <div v-if="game?.allImages" class="carousel-images" :style="{ zIndex: openCarousel ? '9999' : '-9999' }">
               <div class="close">
                 <Icon name="ph:x" size="2em" @click="closeCarousel" />
               </div>
@@ -31,7 +31,7 @@
                   </div>
               </div>
             </div>
-        </Teleport>
+        <!-- </Teleport> -->
     </div>
 </template>
 
@@ -40,8 +40,10 @@ const props = defineProps({
     game: Object
 })
 
+console.log(props?.game?.allImages);
+
 const currentSlide = ref(1);
-const openCarousel = ref(false);
+const openCarousel = ref();
 
 const showCarousel = ((index) => {
   openCarousel.value = true;
@@ -55,6 +57,14 @@ const slideTo = ((index) => {
 const closeCarousel = (() => {
   openCarousel.value = false;
 })
+
+watchEffect(() => {
+  if (openCarousel.value) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+});
 </script>
 
 <style lang="scss">
