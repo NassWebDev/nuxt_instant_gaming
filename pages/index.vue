@@ -13,10 +13,10 @@ useHead({
     <div class="games">
       <div class="headline">
         <h3>
-          Populaires
+          Popular
         </h3>
         <NuxtLink to="/populaires">
-          Tout Voir
+          See All
         </NuxtLink>
       </div>
       <div class="list">
@@ -28,10 +28,10 @@ useHead({
     <div class="games">
       <div class="headline">
         <h3>
-          Prochaines Sorties
+          Next Releases
         </h3>
         <NuxtLink to="next-release">
-          Tout Voir
+          See All
         </NuxtLink>
       </div>
       <div class="list">
