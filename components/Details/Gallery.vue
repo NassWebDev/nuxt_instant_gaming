@@ -11,7 +11,7 @@
         <p v-else>
             No Image
         </p>
-        <!-- <Teleport to="body"> -->
+        <Teleport to="body">
             <div v-if="game?.allImages" class="carousel-images" :style="{ zIndex: openCarousel ? '9999' : '-9999' }">
               <div class="close">
                 <Icon name="ph:x" size="2em" @click="closeCarousel" />
@@ -31,7 +31,7 @@
                   </div>
               </div>
             </div>
-        <!-- </Teleport> -->
+        </Teleport>
     </div>
 </template>
 
@@ -42,7 +42,7 @@ const props = defineProps({
 
 console.log(props?.game?.allImages);
 
-const currentSlide = ref(1);
+const currentSlide = ref(0);
 const openCarousel = ref(false);
 
 const showCarousel = ((index) => {
