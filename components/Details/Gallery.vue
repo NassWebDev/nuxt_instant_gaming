@@ -43,7 +43,7 @@ const props = defineProps({
 console.log(props?.game?.allImages);
 
 const currentSlide = ref(1);
-const openCarousel = ref();
+const openCarousel = ref(false);
 
 const showCarousel = ((index) => {
   openCarousel.value = true;
@@ -56,6 +56,7 @@ const slideTo = ((index) => {
 
 const closeCarousel = (() => {
   openCarousel.value = false;
+  currentSlide.value = 1;
 })
 
 watchEffect(() => {
