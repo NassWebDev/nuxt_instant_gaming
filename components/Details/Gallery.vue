@@ -40,8 +40,6 @@ const props = defineProps({
     game: Object
 })
 
-console.log(props?.game?.allImages);
-
 const currentSlide = ref(0);
 const openCarousel = ref(false);
 
