@@ -1,7 +1,7 @@
 <template>
   <div class="games">
     <h2>
-      Prochaines Sorties
+      Next Releases
     </h2>
     <div class="list">
       <GamesList :number_of_games="21" :currentPage="currentPage" :ordering="'released'" :dates="formattedDate + ',' + formattedFutureDate"  @total-items="getCount"/>

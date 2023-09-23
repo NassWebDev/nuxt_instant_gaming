@@ -1,7 +1,7 @@
 <template>
     <div class="games">
       <h2>
-        Jeux Populaires
+        Popular
       </h2>
         <div class="list">
           <GamesList :number_of_games="21" :currentPage="currentPage" @total-items="getCount"/>
