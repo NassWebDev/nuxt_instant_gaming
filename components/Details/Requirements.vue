@@ -3,7 +3,7 @@
         <h2>
             Requirements
         </h2>
-        <div v-if="game?.hasPcPlatform" class="requirements">
+        <div v-if="game?.hasPcPlatform && game?.hasPcPlatform?.requirements" class="requirements">
             <p v-html="formattedMinimum"></p>
             <p v-html="formattedRecommended"></p>
         </div>
