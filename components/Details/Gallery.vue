@@ -95,11 +95,12 @@ watchEffect(() => {
     }
     .carousel-images {
       width: 100vw;
+      height: 100vh;
       position: relative;
       position: fixed;
       top: 0;
-      right: 0;
-      left: 0;
+      // right: 0;
+      // left: 0;
       bottom: 0;
       z-index: 99999;
       overflow-y: auto;      
@@ -118,19 +119,12 @@ watchEffect(() => {
     }
 
     .images-container{
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      z-index: 999;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      row-gap: 15px;
-      outline: none;
-      overflow: auto;
+      gap: 15px;
       padding: 15px;
       background-color: #323232;
 
