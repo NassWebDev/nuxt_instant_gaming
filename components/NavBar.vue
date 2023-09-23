@@ -5,10 +5,10 @@
         <div class="nav-middle">
             <ul>
                 <NuxtLink to="/populaires"> 
-                    Populaires
+                    Popular
                 </NuxtLink>
                 <NuxtLink to="/next-release">
-                    Prochaines sorties
+                    Next Releases
                 </NuxtLink>
             </ul>
             <input type="text">
