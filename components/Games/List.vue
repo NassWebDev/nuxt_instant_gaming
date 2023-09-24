@@ -15,6 +15,8 @@
 import GamesCard from '@/components/Games/Card.vue';
 import LoadingAnim from '@/components/LoadingAnim.vue';
 
+import useFetchAllGames from '@/utils/useFetchAllGames.js';
+
 const emit = defineEmits(['total-items']);
 
 const props = defineProps({
@@ -29,23 +31,13 @@ const props = defineProps({
 
 const currentPage = toRef(props, 'currentPage');
 
-const { data: allgames, pending } = await useFetch("https://api.rawg.io/api/games", {
-    method: "GET",
-    headers:{
-        "Content-Type": "application/json",
-        "token": `Token ${import.meta.env.VITE_ACCESS_TOKEN}`,
-    },
-    params:{
-        key: import.meta.env.VITE_API_KEY,
-        page: currentPage,
-        page_size: props?.number_of_games,
-        ordering: props?.ordering,
-        dates: props?.dates,
-        genres: props?.genre,
-        tags: props?.tags,
-        developers: props?.developer
-    },
-    watch:[currentPage]
+const { data: allgames, pending } = await useFetchAllGames(currentPage, {
+    page_size: props?.number_of_games,
+    ordering: props?.ordering,
+    dates: props?.dates,
+    genres: props?.genre,
+    tags: props?.tags,
+    developers: props?.developer
 })
 
 if (allgames.value) {

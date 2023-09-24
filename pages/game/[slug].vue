@@ -14,29 +14,15 @@ import DetailsDescription from '@/components/Details/Description.vue';
 import DetailsGallery from '@/components/Details/Gallery.vue';
 import DetailsRequirements from '@/components/Details/Requirements.vue';
 
+import useFetchGameDetails from "@/utils/useFetchGameDetails.js"
+import useFetchGameImages from "@/utils/useFetchGameImages.js"
+
 const route = useRoute();
 
-const { data: game } = await useFetch(`https://api.rawg.io/api/games/${route.params.slug}`, {
-    method: "GET",
-    headers:{
-        "Content-Type": "application/json",
-        "token": `Token ${import.meta.env.VITE_ACCESS_TOKEN}`,
-    },
-    params:{
-        key: import.meta.env.VITE_API_KEY
-    }
-})
+const { slug } = route.params;
 
-const { data: gameImages } = await useFetch(`https://api.rawg.io/api/games/${route.params.slug}/screenshots`, {
-    method: "GET",
-    headers:{
-        "Content-Type": "application/json",
-        "token": `Token ${import.meta.env.VITE_ACCESS_TOKEN}`,
-    },
-    params:{
-        key: import.meta.env.VITE_API_KEY
-    }
-})
+const {data: game} = await useFetchGameDetails(slug);
+const {data: gameImages} = await useFetchGameImages(slug);
 
 const hasPcPlatform = toRaw(game.value.platforms.find(platform => platform.platform.slug === 'pc'));
 
