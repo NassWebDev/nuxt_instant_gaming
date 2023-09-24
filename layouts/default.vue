@@ -1,14 +1,12 @@
 <template>
   <div class="main-container">
       <NavBar />
-      <!-- <TrendingGames /> -->
       <slot />
   </div>
 </template>
 
 <script setup>
 import NavBar from '@/components/NavBar.vue';
-import TrendingGames from '@/components/TrendingGames.vue';
 </script>
 
 <style>
