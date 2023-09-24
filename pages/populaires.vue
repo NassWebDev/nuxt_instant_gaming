@@ -19,10 +19,6 @@
 <script setup>
 import GamesList from '@/components/Games/List.vue';
 
-definePageMeta({
-  layout: "custom"
-})
-
 const currentPage = ref(1);
 
 const count = ref(0);
