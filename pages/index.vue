@@ -1,12 +1,3 @@
-<script setup>
-import TrendingGames from '@/components/TrendingGames.vue';
-import GamesList from '@/components/Games/List.vue';
-
-useHead({
-  title: "Instant Gaming"
-})
-</script>
-
 <template>
   <div>
     <TrendingGames />
@@ -44,6 +35,15 @@ useHead({
     </div>
   </div>
 </template>
+
+<script setup>
+import TrendingGames from '@/components/TrendingGames.vue';
+import GamesList from '@/components/Games/List.vue';
+
+useHead({
+  title: "Instant Gaming"
+})
+</script>
 
 <style lang="scss">
 @import "@/assets/styles/list.scss";
