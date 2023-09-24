@@ -57,13 +57,13 @@ const closeCarousel = (() => {
   currentSlide.value = 1;
 })
 
-watchEffect(() => {
-  if (openCarousel.value) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
-});
+// watchEffect(() => {
+//   if (openCarousel.value) {
+//     document.body.style.overflow = 'hidden';
+//   } else {
+//     document.body.style.overflow = '';
+//   }
+// });
 </script>
 
 <style lang="scss">
