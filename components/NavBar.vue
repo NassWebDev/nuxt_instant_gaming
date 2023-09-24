@@ -30,7 +30,7 @@
         padding: 10px 20px;
 
         .logo{
-            z-index: 9999;
+            z-index: 999;
             width: 150px;
             height: 40px;
             background-image: url("../assets/images/logo-horizontal.svg");
