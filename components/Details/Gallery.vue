@@ -43,9 +43,12 @@ const props = defineProps({
 const currentSlide = ref(0);
 const openCarousel = ref(false);
 
+const bodyRef = ref(null);
+
 const showCarousel = ((index) => {
   openCarousel.value = true;
   currentSlide.value = index;
+  setBodyOverflow(true);
 })
 
 const slideTo = ((index) => {
@@ -55,18 +58,36 @@ const slideTo = ((index) => {
 const closeCarousel = (() => {
   openCarousel.value = false;
   currentSlide.value = 1;
+  setBodyOverflow(false);
 })
 
-// watchEffect(() => {
-//   if (openCarousel.value) {
-//     document.body.style.overflow = 'hidden';
-//   } else {
-//     document.body.style.overflow = '';
-//   }
-// });
+const setBodyOverflow = (overflowHidden) => {
+  if (bodyRef.value) {
+    if (overflowHidden) {
+      bodyRef.value.classList.add('overflow-hidden');
+    } else {
+      bodyRef.value.classList.remove('overflow-hidden');
+    }
+  }
+}
+
+onMounted(() => {
+  bodyRef.value = document.body;
+  if (openCarousel.value) {
+    setBodyOverflow(true);
+  }
+});
+
+onBeforeUnmount(() => {
+  setBodyOverflow(false);
+});
 </script>
 
 <style lang="scss">
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .gallery{
       display: flex;
       flex-direction: column;
