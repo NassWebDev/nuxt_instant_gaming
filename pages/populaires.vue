@@ -8,7 +8,7 @@
             :number_of_games="21"
             :currentPage="currentPage"
             ordering="-added"
-            dates="2023-01-01,2023-09-25"
+            dates="2021-01-01,2023-09-25"
             @total-items="getCount"
           />
           <vue-awesome-paginate
