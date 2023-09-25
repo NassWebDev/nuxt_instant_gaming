@@ -13,6 +13,8 @@
       <div class="list">
         <GamesList
           :number_of_games="9"
+          ordering="-added"
+          dates="2020-01-01,2023-09-25"
         />
       </div>
     </div>
