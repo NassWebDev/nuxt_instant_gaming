@@ -1,4 +1,5 @@
 <template>
+  <div class="container-games">
     <div class="games">
       <h2>
         Popular
@@ -20,6 +21,7 @@
           />
         </div>
     </div>
+  </div>
 </template>
 
 <script setup>

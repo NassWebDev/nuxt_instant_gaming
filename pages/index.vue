@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-games">
     <TrendingGames />
     <div class="games">
       <div class="headline">
