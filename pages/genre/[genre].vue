@@ -21,17 +21,9 @@ import GamesList from '@/components/Games/List.vue';
 
 const route = useRoute();
 
-console.log(route.params.genre);
-
 const genreGame = ref(route.params.genre)
 
 const transformedGenre = genreGame.value.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-
-console.log(toRaw(genreGame.value));
-
-definePageMeta({
-  layout: "custom"
-})
 
 const currentPage = ref(1);
 

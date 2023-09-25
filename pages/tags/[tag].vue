@@ -16,37 +16,28 @@
     </div>
   </template>
   
-  <script setup>
-  import GamesList from '@/components/Games/List.vue';
+<script setup>
+import GamesList from '@/components/Games/List.vue';
   
-  const route = useRoute();
+const route = useRoute();
+    
+const tagUser = ref(route.params.tag)
   
-  console.log(route.params.tag);
+const transformedTag = tagUser.value.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
   
-  const tagUser = ref(route.params.tag)
-  
-  const transformedTag = tagUser.value.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-  
-  console.log(toRaw(tagUser.value));
-  
-  definePageMeta({
-    layout: "custom"
-  })
-  
-  const currentPage = ref(1);
+const currentPage = ref(1);
 
-  const count = ref(0);
+const count = ref(0);
 
-  const getCount = ((value) => {
-    count.value = value;
-  })
+const getCount = ((value) => {
+  count.value = value;
+})
   
   const onClickHandler = (page) => {
-    currentPage.value = page;
-    console.log(currentPage.value);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
-  </script>
+  currentPage.value = page;
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+</script>

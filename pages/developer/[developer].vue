@@ -25,10 +25,6 @@ const developer = ref(route.params.developer)
   
 const transformedDeveloper = developer.value.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
   
-definePageMeta({
-  layout: "custom"
-})
-  
 const currentPage = ref(1);
 
 const count = ref(0);
