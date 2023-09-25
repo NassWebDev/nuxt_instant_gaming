@@ -51,10 +51,10 @@ else{
 
 <style lang="scss" scoped>
     .imageTrending{
-        height: 80vh;
+        width: 100%;
         background-size: cover;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
-
+        clip-path: polygon(0 0, 100% 0, 100% 69%, 0 61%);
+        aspect-ratio: 16/9;
 
         &::before{
             content: "";
