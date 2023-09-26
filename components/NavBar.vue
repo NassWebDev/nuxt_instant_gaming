@@ -57,6 +57,10 @@
             align-items: center;
             row-gap: 15px;
 
+            @media screen and (max-width: 1000px) {
+                width: 40%;
+            }
+
             ul{
                 display: flex;
                 column-gap: 50px;
@@ -81,6 +85,10 @@
 
                 @media screen and (max-width: 1000px) {
                     width: 80%;
+                }
+
+                @media screen and (max-width: 500px) {
+                    width: 60%;
                 }
             }
         }
