@@ -3,7 +3,7 @@
         <h2>
             Requirements
         </h2>
-        <div v-if="(formattedMinimum || formattedRecommended)" class="requirements">
+        <div v-if="(formattedMinimum != undefined || formattedRecommended != undefined)" class="requirements">
             <p v-html="formattedMinimum"></p>
             <p v-html="formattedRecommended"></p>
         </div>
@@ -29,11 +29,16 @@ const formattedRecommended = recommended?.replace(/\n/g, "<br>");
     .requirements-container{
       display: flex;
       flex-direction: column;
-      row-gap: 20px;
+      row-gap: 30px;
 
       .requirements{
         display: flex;
         column-gap: 100px;
+
+        @media screen and (max-width: 650px) {
+            flex-direction: column;
+            row-gap: 20px;
+        }
 
         p{
           width: calc(50% - 30px);
