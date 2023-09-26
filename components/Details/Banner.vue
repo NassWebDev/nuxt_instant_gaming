@@ -162,6 +162,7 @@ defineProps({
 
           .genres{
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             column-gap: 10px;
