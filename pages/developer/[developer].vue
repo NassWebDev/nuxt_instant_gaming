@@ -4,13 +4,18 @@
       {{transformedDeveloper}}
     </h2>
     <div class="list">
-      <GamesList :number_of_games="21" :currentPage="currentPage" :developer="developer" @total-items="getCount"/>
+      <GamesList
+        :number_of_games="21"
+        :currentPage="currentPage"
+        :developer="developer"
+        @total-items="getCount"
+      />
       <vue-awesome-paginate
-          :total-items="count"
-          :items-per-page="21"
-          :max-pages-shown="3"
-          v-model="currentPage"
-          :on-click="onClickHandler"
+        :total-items="count"
+        :items-per-page="21"
+        :max-pages-shown="3"
+        v-model="currentPage"
+        :on-click="onClickHandler"
       />
     </div>
   </div>

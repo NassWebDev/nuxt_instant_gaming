@@ -1,20 +1,25 @@
 <template>
-    <div class="games">
-      <h2>
-        {{transformedTag}}
-      </h2>
-      <div class="list">
-        <GamesList :number_of_games="21" :currentPage="currentPage" :tags="tagUser" @total-items="getCount"/>
-        <vue-awesome-paginate
-            :total-items="count"
-            :items-per-page="21"
-            :max-pages-shown="3"
-            v-model="currentPage"
-            :on-click="onClickHandler"
-        />
-      </div>
+  <div class="games">
+    <h2>
+      {{transformedTag}}
+    </h2>
+    <div class="list">
+      <GamesList
+        :number_of_games="21"
+        :currentPage="currentPage"
+        :tags="tagUser"
+        @total-items="getCount"
+      />
+      <vue-awesome-paginate
+        :total-items="count"
+        :items-per-page="21"
+        :max-pages-shown="3"
+        v-model="currentPage"
+        :on-click="onClickHandler"
+      />
     </div>
-  </template>
+  </div>
+</template>
   
 <script setup>
 import GamesList from '@/components/Games/List.vue';

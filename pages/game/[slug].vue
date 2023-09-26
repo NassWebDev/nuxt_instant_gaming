@@ -1,11 +1,11 @@
 <template>
   <TrendingGames /> 
-      <div class="details-container">
-        <DetailsBanner :game="gameInfo"/>
-        <DetailsDescription :game="gameInfo"/>
-        <DetailsGallery :game="gameInfo"/>
-        <DetailsRequirements :game="gameInfo"/>
-      </div>
+  <div class="details-container">
+    <DetailsBanner :game="gameInfo"/>
+    <DetailsDescription :game="gameInfo"/>
+    <DetailsGallery :game="gameInfo"/>
+    <DetailsRequirements :game="gameInfo"/>
+  </div>
 </template>
 
 <script setup>
