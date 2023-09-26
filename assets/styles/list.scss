@@ -4,10 +4,6 @@
     align-items: center;
     margin-bottom: 20px;
 
-    // @media screen and (max-width: 1000px) {
-    //     margin-top: 80px;
-    // }
-
     .games{
         width: 100%;
         max-width: 1200px;
@@ -15,6 +11,7 @@
         flex-direction: column;
         row-gap: 20px;
         padding: 10px;
+        margin-top: 20px;
     
         .headline{
             display: flex;

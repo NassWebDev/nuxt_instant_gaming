@@ -56,10 +56,6 @@ else{
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
         aspect-ratio: 16/5;
 
-        @media screen and (max-width: 500px) {
-                display: none;
-            }
-
         &::before{
             content: "";
             position: absolute;
