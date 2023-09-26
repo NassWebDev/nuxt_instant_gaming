@@ -132,7 +132,7 @@ onBeforeUnmount(() => {
 
           .image-selected{
             min-width: 70%;
-            border-radius: 10px;
+            border-radius: 5px;
             object-fit: cover;
             aspect-ratio: 16/9;
           }
