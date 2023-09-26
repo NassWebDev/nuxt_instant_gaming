@@ -8,7 +8,7 @@
                 <img :src="image.image" alt="">
             </li>
         </ul>
-        <Carousel :items-to-show="2" v-model="currentSlide" v-if="game?.allImages.length > 0">
+        <Carousel :items-to-show="1.5" v-model="currentSlide" v-if="game?.allImages.length > 0">
           <Slide v-for="image in game?.allImages" :key="image.id" @click="showCarousel(index)">
             <img :src="image.image" alt="" class="image-selected">
           </Slide>
@@ -21,12 +21,14 @@
               <div class="close">
                 <Icon name="ph:x" size="2em" @click="closeCarousel" />
               </div>
-              <div class="images-container">
-                <Carousel v-model="currentSlide">
-                  <Slide v-for="image in game?.allImages" :key="image.id">
-                    <img :src="image.image" alt="" class="image-selected">
-                  </Slide>
-                </Carousel>
+                <div class="selected">
+                  <Carousel v-model="currentSlide">
+                    <Slide v-for="image in game?.allImages" :key="image.id">
+                      <img :src="image.image" alt="" class="image-selected">
+                    </Slide>
+                  </Carousel>
+                </div>
+                <div class="images-container">
                   <div class="thumbs-container">
                     <ul class="thumber">
                       <li v-for="(image, index) in game?.allImages" :key="index" @click="slideTo(index)">
@@ -62,7 +64,7 @@ const slideTo = ((index) => {
 
 const closeCarousel = (() => {
   openCarousel.value = false;
-  currentSlide.value = 1;
+  currentSlide.value = 0;
   setBodyOverflow(false);
 })
 
@@ -101,12 +103,13 @@ onBeforeUnmount(() => {
       .list{
         display: flex;
         justify-content: center;
-        gap: 20px;;
+        gap: 20px;
         flex-wrap: wrap;
 
         li{
           list-style: none;
           width: calc(50% - 20px);
+
 
           img{
             width: 100%;
@@ -125,21 +128,13 @@ onBeforeUnmount(() => {
         display: none;
 
         li{
-          margin: 0 20px;
+          padding: 15px;
 
           .image-selected{
             min-width: 70%;
             border-radius: 10px;
             object-fit: cover;
             aspect-ratio: 16/9;
-          }
-
-          &:first-child{
-            margin-left: 0;
-          }
-
-          &:last-child{
-            margin-right: 0;
           }
         }
 
@@ -154,11 +149,14 @@ onBeforeUnmount(() => {
       position: relative;
       position: fixed;
       top: 0;
-      // right: 0;
-      // left: 0;
       bottom: 0;
       z-index: 99999;
-      overflow-y: auto;      
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+      background-color: #323232;
 
       &.active{
         display: block;
@@ -173,22 +171,32 @@ onBeforeUnmount(() => {
       z-index: 9999;
     }
 
+    .selected{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 16/9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .image-selected{
+        width: 70%;
+        border-radius: 6px;
+        
+
+        @media screen and (max-width: 650px) {
+          width: 100%;          
+        }
+      }
+    }
+
     .images-container{
-      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 15px;
-      padding: 15px;
-      background-color: #323232;
-
-      .image-selected{
-        width: 70%;
-        border-radius: 10px;
-        object-fit: cover;
-        aspect-ratio: 16/9;
-      }
 
       .thumbs-container{
         display: flex;
@@ -203,13 +211,16 @@ onBeforeUnmount(() => {
           align-items: center;
           column-gap: 20px;
 
+          @media screen and (max-width: 650px) {
+            column-gap: 10px;
+          }
+
             li{
-              width: 30%;
+              width: 25%;
               list-style: none;
-              border-radius: 7px;
 
               img{
-                border-radius: 7px;
+                border-radius: 3px;
                 width: 100%;
                 margin: 0 5px;
                 object-fit: cover;
