@@ -4,8 +4,8 @@
             Requirements
         </h2>
         <div v-if="(formattedMinimum != undefined || formattedRecommended != undefined)" class="requirements">
-            <p v-html="formattedMinimum"></p>
-            <p v-html="formattedRecommended"></p>
+            <p v-if="formattedMinimum" v-html="formattedMinimum"></p>
+            <p v-if="formattedRecommended" v-html="formattedRecommended"></p>
         </div>
         <p v-else>
             N/A
