@@ -182,11 +182,10 @@ onBeforeUnmount(() => {
 
       .image-selected{
         width: 70%;
-        padding: 15px;
-        
+        border-radius: 6px;        
 
         @media screen and (max-width: 650px) {
-          width: calc(100% - 5px);          
+          width: calc(100% - 20px);          
         }
       }
     }
