@@ -44,6 +44,10 @@ const formattedRecommended = recommended?.replace(/\n/g, "<br>");
           width: calc(50% - 30px);
           line-height: 30px;
           font-size: 20px;
+
+          @media screen and (max-width: 650px) {
+            width: 100%;    
+          }
         }
       }
     }

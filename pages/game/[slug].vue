@@ -57,6 +57,11 @@ if (hasPcPlatform !== undefined && hasPcPlatform.requirements !== undefined) {
     top: -250px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     row-gap: 50px;
+
+    @media screen and (max-width: 650px) {
+      align-items: normal;
+    }
   }
 </style>
