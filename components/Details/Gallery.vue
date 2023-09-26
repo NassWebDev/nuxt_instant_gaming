@@ -13,9 +13,9 @@
             <img :src="image.image" alt="" class="image-selected">
           </Slide>
         </Carousel>
-        <!-- <p v-else>
+        <p v-else>
             No Image
-        </p> -->
+        </p>
         <Teleport to="body">
             <div v-if="game?.allImages" class="carousel-images" :style="{ zIndex: openCarousel ? '9999' : '-9999' }">
               <div class="close">
