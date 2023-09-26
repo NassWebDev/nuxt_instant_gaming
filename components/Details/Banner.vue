@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
     game: Object
 })
 </script>
@@ -69,20 +69,27 @@ const props = defineProps({
 <style lang="scss">
 .banner{
     width: 100%;
+    max-width: 1200px;
     display: flex;
     justify-content: center;
     align-items: center;
     column-gap: 60px;
     flex-wrap: wrap;
 
+    @media screen and (max-width: 650px) {
+      margin-top: 100px;
+    }
+
       img{
-        width: 600px;
+        width: 100%;
+        max-width: 600px;
         aspect-ratio: 16/9;
         border-radius: 10px;
       }
 
       .no-image{
-        width: 600px;
+        width: 100%;
+        max-width: 600px;
         aspect-ratio: 16/9;
         border-radius: 10px;
         background-color: #000;
@@ -92,7 +99,8 @@ const props = defineProps({
       }
 
       .details-game{
-        min-width: 600px;
+        width: 100%;
+        max-width: 700px;
         color: #fff;
         border: transparent;
         border-radius: 10px;
@@ -203,6 +211,10 @@ const props = defineProps({
             align-items: center;
             border-radius: 8px;
             cursor: pointer;
+
+            @media screen and (max-width: 650px) {
+              flex: 1;              
+            }
 
             svg{
               color: #d4d4d4;

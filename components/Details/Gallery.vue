@@ -8,9 +8,14 @@
                 <img :src="image.image" alt="">
             </li>
         </ul>
-        <p v-else>
+        <Carousel :items-to-show="2" v-model="currentSlide" v-if="game?.allImages.length > 0">
+          <Slide v-for="image in game?.allImages" :key="image.id" @click="showCarousel(index)">
+            <img :src="image.image" alt="" class="image-selected">
+          </Slide>
+        </Carousel>
+        <!-- <p v-else>
             No Image
-        </p>
+        </p> -->
         <Teleport to="body">
             <div v-if="game?.allImages" class="carousel-images" :style="{ zIndex: openCarousel ? '9999' : '-9999' }">
               <div class="close">
@@ -109,6 +114,37 @@ onBeforeUnmount(() => {
             aspect-ratio: 16/9;
             cursor: pointer;
           }
+        }
+
+        @media screen and (max-width: 650px) {
+          display: none;
+        }
+      }
+
+      .carousel{
+        display: none;
+
+        li{
+          margin: 0 20px;
+
+          .image-selected{
+            min-width: 70%;
+            border-radius: 10px;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+          }
+
+          &:first-child{
+            margin-left: 0;
+          }
+
+          &:last-child{
+            margin-right: 0;
+          }
+        }
+
+        @media screen and (max-width: 650px) {
+          display: block;
         }
       }
     }
