@@ -4,12 +4,17 @@
     align-items: center;
     margin-bottom: 20px;
 
+    // @media screen and (max-width: 1000px) {
+    //     margin-top: 80px;
+    // }
+
     .games{
+        width: 100%;
         max-width: 1200px;
         display: flex;
         flex-direction: column;
-        row-gap: 10px;
-        margin-top: 100px;
+        row-gap: 20px;
+        padding: 10px;
     
         .headline{
             display: flex;
@@ -43,13 +48,17 @@
             .list-games{
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: center;
+                justify-content: space-between;
+                row-gap: 30px;
         
                 li{
                     width: calc(33.33333% - 30px);
-                    min-width: 0;
-                    list-style: none;
-                    margin: 15px;
+                    list-style: none;   
+                    transition: all 0.150s ease-in-out;
+                    
+                    @media screen and (max-width: 650px) {
+                        width: calc(50% - 10px);
+                    }
         
                     a{
                         text-decoration: none;

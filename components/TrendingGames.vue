@@ -53,8 +53,12 @@ else{
     .imageTrending{
         width: 100%;
         background-size: cover;
-        clip-path: polygon(0 0, 100% 0, 100% 69%, 0 61%);
-        aspect-ratio: 16/9;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+        aspect-ratio: 16/5;
+
+        @media screen and (max-width: 500px) {
+                display: none;
+            }
 
         &::before{
             content: "";

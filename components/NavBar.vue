@@ -28,6 +28,11 @@
         position: absolute;
         align-items: center;
         padding: 10px 20px;
+        transition: all 0.150s ease;
+
+        @media screen and (max-width: 850px) {
+            padding: 10px;
+        }
 
         .logo{
             z-index: 999;
@@ -36,6 +41,12 @@
             background-image: url("../assets/images/logo-horizontal.svg");
             background-size: 100%;
             background-repeat: no-repeat;
+            transition: all 0.150s ease;
+
+            @media screen and (max-width: 1000px) {
+                width: 95px;
+                height: 24px;
+            }
         }
 
         .nav-middle{
@@ -50,6 +61,10 @@
                 display: flex;
                 column-gap: 50px;
 
+                @media screen and (max-width: 1000px) {
+                    display: none;
+                }
+
                 a{
                     color: #e8e8e8;
                     text-decoration: none;
@@ -63,6 +78,10 @@
                 border-radius: 10px;
                 border: solid 1px black;
                 z-index: 1;
+
+                @media screen and (max-width: 1000px) {
+                    width: 80%;
+                }
             }
         }
 
@@ -75,6 +94,10 @@
             color: #e8e8e8;
             z-index: 1;
             column-gap: 30px;
+
+            @media screen and (max-width: 1000px) {
+                width: 95px;
+            }
         }
     }
 </style>

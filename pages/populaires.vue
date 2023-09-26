@@ -44,4 +44,8 @@ const onClickHandler = (page) => {
 <style lang="scss">
 @import "@/assets/styles/list.scss";
 @import "@/assets/styles/pagination.css";
+
+.games{
+  margin-top: 80px;
+}
 </style>
