@@ -1,7 +1,6 @@
 <template>
     <header>
-        <NuxtLink class="logo" to="/">
-        </NuxtLink>
+        <NuxtLink class="logo" to="/" />
         <div class="nav-middle">
             <ul>
                 <NuxtLink to="/populaires"> 
@@ -15,10 +14,27 @@
         </div>
         <div class="icons">
             <Icon name="solar:cart-large-4-outline" size="1.8em"/>
-            <Icon name="mdi-light:account" size="2em"/>
+            <NuxtLink to="/login" v-if="!isLoggedIn">
+                <Icon name="mdi-light:account" size="2em" />
+            </NuxtLink>
+            <Icon name="tabler:logout" size="2em" v-else @click="logout"/>
         </div>
     </header>
 </template>
+
+<script setup>
+const isLoggedIn = useSupabaseUser();
+
+const supabase = useSupabaseClient();
+
+const logout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+        console.log(error);
+    }
+    return navigateTo("/");
+}
+</script>
 
 <style lang="scss">
     header{
