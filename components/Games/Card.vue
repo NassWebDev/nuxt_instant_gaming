@@ -1,6 +1,6 @@
 <template>
     <NuxtLink :to="`/game/${game?.slug}`">
-      <img v-if="game?.background_image" :src=game?.background_image :alt=game?.name>
+      <NuxtImg width="100%" height="100%" v-if="game?.background_image" :src=game?.background_image :alt=game?.name />
       <div v-else class="no-image">
       <p>
         No Image

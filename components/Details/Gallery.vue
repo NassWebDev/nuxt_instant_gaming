@@ -5,12 +5,12 @@
         </h2>
         <ul class="list" v-if="game?.allImages.length > 0">
             <li v-for="(image, index) in game?.allImages" :key="index" @click="showCarousel(index)">
-                <img :src="image.image" alt="">
+                <NuxtImg :src="image.image" alt="" />
             </li>
         </ul>
         <Carousel :items-to-show="1.5" v-model="currentSlide" v-if="game?.allImages.length > 0">
-          <Slide v-for="image in game?.allImages" :key="image.id" @click="showCarousel(index)">
-            <img :src="image.image" alt="" class="image-selected">
+          <Slide v-for="(image, index) in game?.allImages" :key="index" @click="showCarousel(index)">
+            <NuxtImg :src="image.image" alt="" class="image-selected" />
           </Slide>
         </Carousel>
         <p v-else>
@@ -24,7 +24,7 @@
                 <div class="selected">
                   <Carousel v-model="currentSlide">
                     <Slide v-for="image in game?.allImages" :key="image.id">
-                      <img :src="image.image" alt="" class="image-selected">
+                      <NuxtImg :src="image.image" alt="" class="image-selected" />
                     </Slide>
                   </Carousel>
                 </div>
@@ -32,7 +32,7 @@
                   <div class="thumbs-container">
                     <ul class="thumber">
                       <li v-for="(image, index) in game?.allImages" :key="index" @click="slideTo(index)">
-                        <img :src="image.image" alt="" :class="{ 'active': index === currentSlide }">
+                        <NuxtImg :src="image.image" alt="" :class="{ 'active': index === currentSlide }" />
                       </li>
                     </ul>
                   </div>
