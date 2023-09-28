@@ -7,7 +7,7 @@
                     Log In
                 </h1>
                 <div class="login-buttons">
-                    <button v-for="provider in provider" :key="provider.provider" @click="loginSocial(provider)" :style="{ backgroundColor: provider?.bgcolor, color: provider?.color }">
+                    <button v-for="provider in provider" :key="provider.provider" @click="loginSocial(provider.provider)" :style="{ backgroundColor: provider?.bgcolor, color: provider?.color }">
                         <Icon :name="provider.icon" size="1.5em" :color="provider?.color" />
                     </button>
                 </div>
@@ -80,8 +80,8 @@ const loginEmail = (async () => {
 })
 
 const loginSocial = (async (provider) => {
-    const {error} = await supabase.auth.signInWithOAuth({
-        provider: provider.provider
+    const { error } = await supabase.auth.signInWithOAuth({
+        provider: provider
     })
     if (error) {
         console.log(error);
