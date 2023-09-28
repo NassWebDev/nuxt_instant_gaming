@@ -1,6 +1,9 @@
 <template>
   <div class="container-games">
-    <TrendingGames />
+    <TrendingGames 
+      ordering="-added"
+      dates="2021-01-01,2023-09-25"
+    />
     <div class="games">
       <div class="headline">
         <h3>
