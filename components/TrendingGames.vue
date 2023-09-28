@@ -14,6 +14,11 @@ const router = useRouter();
 
 const image = ref(null);
 
+const props = defineProps({
+    ordering: String,
+    dates: String
+})
+
 const { data: trendingGame } = await useFetch(`https://api.rawg.io/api/games`, {
     method: "GET",
     headers:{
@@ -21,7 +26,9 @@ const { data: trendingGame } = await useFetch(`https://api.rawg.io/api/games`, {
         "token": `Token ${import.meta.env.VITE_ACCESS_TOKEN}`,
     },
     params:{
-        key: import.meta.env.VITE_API_KEY
+        key: import.meta.env.VITE_API_KEY,
+        ordering: props?.ordering,
+        dates: props?.dates
     }
 })
 
