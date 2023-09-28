@@ -32,7 +32,7 @@ const logout = async () => {
     if (error) {
         console.log(error);
     }
-    return navigateTo("/");
+    return navigateTo("/login");
 }
 </script>
 
