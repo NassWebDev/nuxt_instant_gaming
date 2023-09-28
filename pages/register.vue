@@ -70,7 +70,9 @@ const signUp = (async () => {
     if (error) {
         console.log(error);
     }
-    return navigateTo("/");
+    else{
+        return navigateTo("/");
+    }
 })
 </script>
 
