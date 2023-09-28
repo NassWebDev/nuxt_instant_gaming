@@ -4,7 +4,15 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-icon',
     'vue3-carousel-nuxt',
-    '@nuxtjs/supabase'
+    '@nuxtjs/supabase',
+    '@nuxt/image',
   ],
   css: [`@/assets/styles/reset.css`],
+  supabase: {
+    redirect: false,
+  },
+  image:{
+    format: ['webp'],
+    quality: 80,
+  }
 })
