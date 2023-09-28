@@ -13,7 +13,6 @@
                         <input type="text" placeholder="First Name" v-model="first_name"/>
                         <input type="text" placeholder="Last Name" v-model="last_name"/>
                         <input type="text" placeholder="Date of Birth" v-model="date"/>
-                        <input type="password" placeholder="Password" v-model="password"/>
                     </div>
                     <button @click="signUp">
                         Send
@@ -41,21 +40,11 @@ const first_name = ref('');
 const last_name = ref('');
 const date = ref('');
 
-// watch(date, (newValue, oldValue) => {
-//     console.log(newValue);
-//     if(newValue !== oldValue){
-//         if(newValue.length === 2 || newValue.length === 5){
-//             date.value += '/';
-//         }
-//     }
-// })
-
 watch(date, (newValue, oldValue) => {
     if (newValue !== oldValue) {
         const regex = /[^0-9]/g;
         let formattedDate = date.value.replace(regex, '');
 
-      // Ajouter les slashs aux positions appropriées
       if (formattedDate.length >= 3) {
         formattedDate = formattedDate.replace(/(\d{2})(\d)/, '$1/$2');
       }
@@ -67,20 +56,9 @@ watch(date, (newValue, oldValue) => {
         formattedDate = formattedDate.slice(0, 10);
         }
 
-      // Mettre à jour la valeur de l'input
       date.value = formattedDate;
     }
 })
-
-// const filterNumeric = (() => {
-//     const regex = /[^0-9]/g;
-//     date.value = date.value.replace(regex, '');
-
-//     if (date.value.length === 2 || date.value.length === 5) {
-//       date.value += '/';
-//     }
-// })
-
 
 const supabase = useSupabaseClient();
 
