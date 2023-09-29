@@ -42,6 +42,10 @@ definePageMeta({
     layout: false,
 });
 
+useHead({
+    title: "Login",
+});
+
 const provider = ref([
     {
         provider: 'facebook',
@@ -88,12 +92,6 @@ const loginSocial = (async (provider) => {
     }
     return navigateTo("/");
 });
-
-const user = useSupabaseUser();
-
-setTimeout(() => {
-    console.log(user.value);
-},3000);
 </script>
 
 <style lang="scss">
