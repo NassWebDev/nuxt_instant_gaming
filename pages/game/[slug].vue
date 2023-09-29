@@ -5,6 +5,9 @@
     <DetailsDescription :game="gameInfo"/>
     <DetailsGallery :game="gameInfo"/>
     <DetailsRequirements :game="gameInfo"/>
+    <div class="comments">
+      
+    </div>
   </div>
 </template>
 
