@@ -21,8 +21,6 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.0.0-rc.2",
-    "@vueuse/core": "^10.4.1",
-    "nuxt-vue-select": "^0.1.4",
     "vue-awesome-paginate": "^1.1.46",
     "vue3-carousel-nuxt": "^1.1.0"
   },
