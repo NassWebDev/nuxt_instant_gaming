@@ -10,9 +10,9 @@
                     <div class="inputs">
                         <input type="text" placeholder="Email" v-model="email"/>
                         <input type="password" placeholder="Password" v-model="password"/>
-                        <input type="text" placeholder="First Name" v-model="first_name"/>
-                        <input type="text" placeholder="Last Name" v-model="last_name"/>
-                        <input type="text" placeholder="Date of Birth" v-model="date"/>
+                        <input type="text" placeholder="First Name" v-model="firstName"/>
+                        <input type="text" placeholder="Last Name" v-model="lastName"/>
+                        <input type="date" placeholder="Date of Birth" v-model="dateOfBirth"/>
                     </div>
                     <button @click="signUp">
                         Send
@@ -34,31 +34,18 @@ definePageMeta({
     layout: false,
 });
 
-const email = ref('');
-const password = ref('');
-const first_name = ref('');
-const last_name = ref('');
-const date = ref('');
-
-watch(date, (newValue, oldValue) => {
-    if (newValue !== oldValue) {
-        const regex = /[^0-9]/g;
-        let formattedDate = date.value.replace(regex, '');
-
-      if (formattedDate.length >= 3) {
-        formattedDate = formattedDate.replace(/(\d{2})(\d)/, '$1/$2');
-      }
-      if (formattedDate.length >= 6) {
-        formattedDate = formattedDate.replace(/(\d{2})(\d)/, '$1/$2');
-      }
-
-      if (formattedDate.length > 10) {
-        formattedDate = formattedDate.slice(0, 10);
-        }
-
-      date.value = formattedDate;
+useHead({
+    title: 'Register',
+    htmlAttrs: {
+        lang: 'en'
     }
 })
+
+const email = ref('');
+const password = ref('');
+const firstName = ref('');
+const lastName = ref('');
+const dateOfBirth = ref('');
 
 const supabase = useSupabaseClient();
 
@@ -67,8 +54,17 @@ const signUp = (async () => {
         email: email.value,
         password: password.value,
     })
-    if (error) {
-        console.log(error);
+    const {errorFetch} = await useFetch('/api/user/signup', {
+        method: 'POST',
+        body: {
+            email: email.value,
+            firstName: firstName.value,
+            lastName: lastName.value,
+            dateOfBirth: dateOfBirth.value,
+        }
+    })
+    if (error || errorFetch) {
+        console.log(error, errorFetch);
     }
     else{
         return navigateTo("/");
@@ -77,6 +73,10 @@ const signUp = (async () => {
 </script>
 
 <style lang="scss">
+::-webkit-calendar-picker-indicator{
+    filter: invert(0.5);
+}
+
 .login-container {
     width: 100%;
     height: 100vh;
@@ -131,7 +131,7 @@ const signUp = (async () => {
                         border: 2px solid #3d3d3d;
                         border-radius: 5px;
                         padding: 10px;
-                        color: #fff;
+                        color: #999;
                         font-size: 16px;
                         
                         &:hover{
