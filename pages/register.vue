@@ -54,20 +54,22 @@ const signUp = (async () => {
         email: email.value,
         password: password.value,
     })
-    const {errorFetch} = await useFetch('/api/user/signup', {
-        method: 'POST',
-        body: {
-            email: email.value,
-            firstName: firstName.value,
-            lastName: lastName.value,
-            dateOfBirth: dateOfBirth.value,
+    if(!error){
+        const {errorFetch} = await useFetch('/api/user/user', {
+            method: 'POST',
+            body: {
+                email: email.value,
+                firstName: firstName.value,
+                lastName: lastName.value,
+                dateOfBirth: dateOfBirth.value,
+            }
+        })
+        if (errorFetch) {
+        console.log(errorFetch);
         }
-    })
-    if (error || errorFetch) {
-        console.log(error, errorFetch);
-    }
-    else{
-        return navigateTo("/");
+        else{
+            return navigateTo("/");
+        }
     }
 })
 </script>
