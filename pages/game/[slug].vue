@@ -6,7 +6,10 @@
     <DetailsGallery :game="gameInfo"/>
     <DetailsRequirements :game="gameInfo"/>
     <div class="comments">
-      
+      <h3>
+        Add a comment
+      </h3>
+      <input type="text" placeholder="Your comment" v-model="comment">
     </div>
   </div>
 </template>
@@ -23,6 +26,8 @@ import useFetchGameImages from "@/utils/useFetchGameImages.js"
 const route = useRoute();
 
 const { slug } = route.params;
+
+const comment = ref('');
 
 const {data: game} = await useFetchGameDetails(slug);
 const {data: gameImages} = await useFetchGameImages(slug);
