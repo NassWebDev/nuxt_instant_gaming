@@ -12,11 +12,6 @@
 </template>
 
 <script setup>
-import GamesCard from '@/components/Games/Card.vue';
-import LoadingAnim from '@/components/LoadingAnim.vue';
-
-import useFetchAllGames from '@/utils/useFetchAllGames.js';
-
 const emit = defineEmits(['total-items']);
 
 const props = defineProps({

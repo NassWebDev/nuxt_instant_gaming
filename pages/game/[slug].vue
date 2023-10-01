@@ -5,29 +5,14 @@
     <DetailsDescription :game="gameInfo"/>
     <DetailsGallery :game="gameInfo"/>
     <DetailsRequirements :game="gameInfo"/>
-    <div class="comments">
-      <h3>
-        Add a comment
-      </h3>
-      <input type="text" placeholder="Your comment" v-model="comment">
-    </div>
+    <DetailsComments :slug="slug"/>
   </div>
 </template>
 
 <script setup>
-import DetailsBanner from '@/components/Details/Banner.vue';
-import DetailsDescription from '@/components/Details/Description.vue';
-import DetailsGallery from '@/components/Details/Gallery.vue';
-import DetailsRequirements from '@/components/Details/Requirements.vue';
-
-import useFetchGameDetails from "@/utils/useFetchGameDetails.js"
-import useFetchGameImages from "@/utils/useFetchGameImages.js"
-
 const route = useRoute();
 
 const { slug } = route.params;
-
-const comment = ref('');
 
 const {data: game} = await useFetchGameDetails(slug);
 const {data: gameImages} = await useFetchGameImages(slug);
@@ -58,18 +43,18 @@ if (hasPcPlatform !== undefined && hasPcPlatform.requirements !== undefined) {
 </script>
 
 <style lang="scss">
-  .details-container {
-    padding: 100px 10%;
-    color: #d4d4d4;
-    position: relative;
-    top: -250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 50px;
+.details-container {
+  padding: 100px 10%;
+  color: #d4d4d4;
+  position: relative;
+  top: -250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 50px;
 
-    @media screen and (max-width: 650px) {
-      align-items: normal;
-    }
+  @media screen and (max-width: 650px) {
+    align-items: normal;
   }
+}
 </style>
