@@ -6,6 +6,7 @@ const prisma = new PrismaClient()
 
 const schema = Joi.object({
     text: Joi.string().required(),
+    userName: Joi.string().required(),
 })
 
 export default defineEventHandler(async (event) => {
@@ -25,12 +26,14 @@ export default defineEventHandler(async (event) => {
     }
 
     const { 
-        text
+        text,
+        userName
     } = body;
 
     const comment = await prisma.comment.create({
         data: {
             text,
+            userName,
             gameSlug,
             userId : parseInt(userId)
         }
