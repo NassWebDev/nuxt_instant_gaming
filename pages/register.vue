@@ -10,8 +10,7 @@
                     <div class="inputs">
                         <input type="text" placeholder="Email" v-model="email"/>
                         <input type="password" placeholder="Password" v-model="password"/>
-                        <input type="text" placeholder="First Name" v-model="firstName"/>
-                        <input type="text" placeholder="Last Name" v-model="lastName"/>
+                        <input type="text" placeholder="Username" v-model="userName"/>
                         <input type="date" placeholder="Date of Birth" v-model="dateOfBirth"/>
                     </div>
                     <button @click="signUp">
@@ -43,8 +42,7 @@ useHead({
 
 const email = ref('');
 const password = ref('');
-const firstName = ref('');
-const lastName = ref('');
+const userName = ref('');
 const dateOfBirth = ref('');
 
 const supabase = useSupabaseClient();
@@ -59,8 +57,7 @@ const signUp = (async () => {
             method: 'POST',
             body: {
                 email: email.value,
-                firstName: firstName.value,
-                lastName: lastName.value,
+                userName: userName.value,
                 dateOfBirth: dateOfBirth.value,
             }
         })
@@ -122,6 +119,7 @@ const signUp = (async () => {
                 row-gap: 20px;
 
                 .inputs{
+                    width: 100%;
                     display: flex;
                     flex-wrap: wrap;
                     gap: 20px;
