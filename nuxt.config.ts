@@ -8,6 +8,9 @@ export default defineNuxtConfig({
     '@nuxt/image',
   ],
   css: [`@/assets/styles/reset.css`],
+  supabase: {
+    redirect: false,
+  },
   image:{
     format: ['webp'],
     quality: 80,
