@@ -5,7 +5,7 @@
     <DetailsDescription :game="gameInfo"/>
     <DetailsGallery :game="gameInfo"/>
     <DetailsRequirements :game="gameInfo"/>
-    <DetailsComments :slug="slug"/>
+    <!-- <DetailsComments :slug="slug"/> -->
   </div>
 </template>
 
