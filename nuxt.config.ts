@@ -8,11 +8,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
   ],
   css: [`@/assets/styles/reset.css`],
-  supabase: {
-    url: import.meta.env.SUPABASE_URL,
-    key: import.meta.env.SUPABASE_KEY,
-    redirect: false,
-  },
   image:{
     format: ['webp'],
     quality: 80,
