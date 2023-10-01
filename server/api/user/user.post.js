@@ -5,10 +5,9 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient()
 
 const schema = Joi.object({
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
+    userName: Joi.string().required(),
     email: Joi.string().required(),
-    dateOfBirth: Joi.date(),
+    dateOfBirth: Joi.date().max('now')
 })
 
 export default defineEventHandler(async (event) => {
@@ -24,16 +23,14 @@ export default defineEventHandler(async (event) => {
     }
 
     const {
-        firstName,
-        lastName,
+        userName,
         email,
         dateOfBirth
     } = body;
 
     const user = await prisma.user.create({
         data: {
-            firstName: firstName.toUpperCase(),
-            lastName: lastName.toUpperCase(),
+            userName,
             email,
             dateOfBirth
         }
