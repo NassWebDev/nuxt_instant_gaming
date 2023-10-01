@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <TrendingGames /> 
   <div class="details-container">
     <DetailsBanner :game="gameInfo"/>
@@ -57,4 +57,4 @@ if (hasPcPlatform !== undefined && hasPcPlatform.requirements !== undefined) {
     align-items: normal;
   }
 }
-</style> -->
+</style>
