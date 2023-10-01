@@ -1,11 +1,11 @@
-<template>
+<!-- <template>
   <TrendingGames /> 
   <div class="details-container">
     <DetailsBanner :game="gameInfo"/>
     <DetailsDescription :game="gameInfo"/>
     <DetailsGallery :game="gameInfo"/>
     <DetailsRequirements :game="gameInfo"/>
-    <!-- <DetailsComments :slug="slug"/> -->
+    <DetailsComments :slug="slug"/>
   </div>
 </template>
 
@@ -57,4 +57,4 @@ if (hasPcPlatform !== undefined && hasPcPlatform.requirements !== undefined) {
     align-items: normal;
   }
 }
-</style>
+</style> -->
