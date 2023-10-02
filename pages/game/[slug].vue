@@ -21,6 +21,7 @@ const hasPcPlatform = toRaw(game.value.platforms.find(platform => platform.platf
 
 const gameInfo = reactive({
   name: toRaw(game.value?.name),
+  slug: toRaw(game.value?.slug),
   image: toRaw(game.value?.background_image),
   allImages: toRaw(gameImages.value?.results),
   developers: toRaw(game.value?.developers),
