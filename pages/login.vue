@@ -70,28 +70,28 @@ const provider = ref([
 const email = ref('');
 const password = ref('');
 
-// const supabase = useSupabaseClient();
+const supabase = useSupabaseClient();
 
-// const loginEmail = (async () => {
-//     const { error } = await supabase.auth.signInWithPassword({
-//         email: email.value,
-//         password: password.value,
-//     })
-//     if (error) {
-//         console.log(error);
-//     }
-//     return navigateTo("/");
-// })
+const loginEmail = (async () => {
+    const { error } = await supabase.auth.signInWithPassword({
+        email: email.value,
+        password: password.value,
+    })
+    if (error) {
+        console.log(error);
+    }
+    return navigateTo("/");
+})
 
-// const loginSocial = (async (provider) => {
-//     const { error } = await supabase.auth.signInWithOAuth({
-//         provider: provider
-//     })
-//     if (error) {
-//         console.log(error);
-//     }
-//     return navigateTo("/");
-// });
+const loginSocial = (async (provider) => {
+    const { error } = await supabase.auth.signInWithOAuth({
+        provider: provider
+    })
+    if (error) {
+        console.log(error);
+    }
+    return navigateTo("/");
+});
 </script>
 
 <style lang="scss">
