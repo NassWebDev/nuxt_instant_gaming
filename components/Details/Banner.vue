@@ -7,7 +7,7 @@
           </p>
         </div>
         <div class="details-game">
-            <Icon class="heart" name="ph:heart" size="2em"/>
+            <Icon class="heart" name="ph:heart" size="2em" @click="addFavorite"/>
             <p class="title">
                 {{ game?.name }}
             </p>
@@ -61,8 +61,30 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
     game: Object
+})
+
+const user = useSupabaseUser();
+const userEmail = ref(user.value.email);
+
+const { errorUserId, data: userId } = await useFetch(`/api/user/${userEmail.value}`)
+if(errorUserId){
+    console.log(errorUserId)
+}
+
+const id = userId.value.id;
+const idString = id.toString();
+
+console.log(toRaw(props.game.slug));
+
+const addFavorite = (async () => {
+    const {error} = await useFetch(`/api/${idString}/favorites/${props.game.slug}/favorite`, ({
+        method: 'PATCH',
+        body: {
+          favorites: props.game.slug,
+        },
+    }))
 })
 </script>
 
