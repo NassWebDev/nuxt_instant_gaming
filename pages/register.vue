@@ -16,7 +16,7 @@
                     <button @click="signUp">
                         Send
                     </button>
-                    <div class="no-account-forgot">
+                    <div class="back">
                         <NuxtLink to="/login">
                             Back
                         </NuxtLink>
@@ -46,6 +46,14 @@ const userName = ref('');
 const dateOfBirth = ref('');
 
 const supabase = useSupabaseClient();
+
+console.log(email.value);
+console.log(userName.value);
+console.log(dateOfBirth.value);
+
+watch(email,() => {
+    console.log(email.value)
+})
 
 const signUp = (async () => {
     const { error } = await supabase.auth.signUp({
@@ -161,9 +169,7 @@ const signUp = (async () => {
                     }
                 }
 
-                .no-account-forgot{
-                    display: flex;
-                    justify-content: space-between;
+                .back{
 
                     a{
                         text-decoration: none;
