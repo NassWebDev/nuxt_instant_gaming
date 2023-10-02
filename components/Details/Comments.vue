@@ -57,8 +57,6 @@ const { errorGetComments, data: comments } = await useFetch(`/api/${idString}/co
 if(errorUserId){
     console.log(errorGetComments)
 }
-
-
 </script>
 
 <style lang="scss">
