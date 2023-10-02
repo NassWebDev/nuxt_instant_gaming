@@ -47,10 +47,6 @@ const dateOfBirth = ref('');
 
 const supabase = useSupabaseClient();
 
-console.log(email.value);
-console.log(userName.value);
-console.log(dateOfBirth.value);
-
 watch(email,() => {
     console.log(email.value)
 })
@@ -66,7 +62,7 @@ const signUp = (async () => {
             body: {
                 email: email.value,
                 userName: userName.value,
-                dateOfBirth: dateOfBirth.value,
+                dateOfBirth: dateOfBirth.value
             }
         })
         if (errorFetch) {
