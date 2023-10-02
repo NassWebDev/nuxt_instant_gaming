@@ -17,10 +17,12 @@ async function seed() {
                     {
                         text: 'This game is great!',
                         gameSlug: 'red-dead-redemption-2',
+                        userName: 'John'
                     },
                     {
                         text: 'This game is nice!',
                         gameSlug: 'elden-ring',
+                        userName: 'Jane'
                     }
                 ]
             }
