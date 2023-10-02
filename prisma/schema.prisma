@@ -12,7 +12,7 @@ model User {
     userName          String
     email             String   @unique
     dateOfBirth       String
-    favorites         String[]
+    favorites         String[] @default([])
     comments          Comment[]
     createdAt         DateTime @default(now())
     updatedAt         DateTime @updatedAt
