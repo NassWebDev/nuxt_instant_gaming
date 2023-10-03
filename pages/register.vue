@@ -1,6 +1,5 @@
 <template>
     <div class="register">
-            <NuxtLink class="logo" to="/" />
             <div class="form">
                 <h1>
                     Sign Up
@@ -77,101 +76,90 @@ const signUp = (async () => {
     filter: invert(0.5);
 }
 
-    .register {
-        width: 50%;
-        height: 100%;
+.register {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    .form{
+        width: 80%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.3s ease;
+        row-gap: 40px;
 
-        .logo {
-            width: 150px;
-            height: 40px;
-            background-image: url("../assets/images/logo-horizontal.svg");
-            background-size: 100%;
-            background-repeat: no-repeat;
-            position: absolute;
-            top: 20px;
-            left: 20px;
+        h1{
+            color: #fff;
         }
 
-        .form{
-            width: 80%;
+        form{
             display: flex;
             flex-direction: column;
-            row-gap: 40px;
+            align-items: center;
+            row-gap: 20px;
 
-            h1{
-                color: #fff;
-            }
-
-            form{
+            .inputs{
+                width: 100%;
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                row-gap: 20px;
+                flex-wrap: wrap;
+                gap: 20px;
 
-                .inputs{
-                    width: 100%;
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 20px;
-
-                    input{
-                        width: calc(50% - 10px);
-                        height: 50px;
-                        background-color: #10101066;
-                        border: 2px solid #3d3d3d;
-                        border-radius: 5px;
-                        padding: 10px;
-                        color: #999;
-                        font-size: 16px;
+                input{
+                    width: calc(50% - 10px);
+                    height: 50px;
+                    background-color: #10101066;
+                    border: 2px solid #3d3d3d;
+                    border-radius: 5px;
+                    padding: 10px;
+                    color: #999;
+                    font-size: 16px;
                         
-                        &:hover{
-                            border: 2px solid #ff6000;
-                        }
+                    &:hover{
+                        border: 2px solid #ff6000;
+                    }
 
-                        &::placeholder{
-                            font-size: 16px;
-                        }
+                    &::placeholder{
+                        font-size: 16px;
                     }
                 }
+            }
 
-                button{
-                    width: 100%;
-                    height: 50px;
-                    background-color: #ff6000;
-                    border: transparent;
-                    border-radius: 5px;
+            button{
+                width: 100%;
+                height: 50px;
+                background-color: #ff6000;
+                border: transparent;
+                border-radius: 5px;
+                color: #fff;
+                font-size: 18px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+
+                &:hover{
+                    transform: scale(1.05);
+                    cursor: pointer;
+                }
+            }
+
+            .back{
+
+                a{
+                    text-decoration: none;
                     color: #fff;
-                    font-size: 18px;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
 
                     &:hover{
-                        transform: scale(1.05);
-                        cursor: pointer;
-                    }
-                }
-
-                .back{
-
-                    a{
-                        text-decoration: none;
-                        color: #fff;
-
-                        &:hover{
-                            color: #ff6000;
-                        }
+                        color: #ff6000;
                     }
                 }
             }
         }
-
-        @media screen and (max-width: 1000px) {
-            width: 100%;
-        }
     }
+
+    @media screen and (max-width: 1000px) {
+        width: 100%;
+    }
+}
 </style>
