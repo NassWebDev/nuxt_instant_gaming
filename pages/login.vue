@@ -1,12 +1,11 @@
 <template>
     <div class="login">
-        <NuxtLink class="logo" to="/" />
         <div class="form">
             <h1>
                 Log In
             </h1>
             <div class="login-buttons">
-                <button v-for="provider in provider" :key="provider.provider" @click="loginSocial(provider.provider)" :style="{ backgroundColor: provider?.bgcolor, color: provider?.color }">
+                <button v-for="provider in providers" :key="provider.provider" @click="loginSocial(provider.provider)" :style="{ backgroundColor: provider?.bgcolor, color: provider?.color }">
                     <Icon :name="provider.icon" size="1.5em" :color="provider?.color" />
                 </button>
             </div>
@@ -25,7 +24,7 @@
                     <NuxtLink to="/register">
                         No account ?
                     </NuxtLink>
-                    <NuxtLink>
+                    <NuxtLink to="/forgot-password">
                         Lost password ?
                     </NuxtLink>
                 </div>
@@ -43,7 +42,7 @@ useHead({
     title: "Login",
 });
 
-const provider = ref([
+const providers = ref([
     {
         provider: 'facebook',
         name: 'Facebook',
@@ -87,7 +86,6 @@ const loginSocial = (async (provider) => {
     if (error) {
         console.log(error);
     }
-    return navigateTo("/");
 });
 </script>
 
