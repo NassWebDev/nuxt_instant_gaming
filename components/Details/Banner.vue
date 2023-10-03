@@ -7,7 +7,8 @@
           </p>
         </div>
         <div class="details-game">
-            <Icon class="heart" name="ph:heart" size="2em" @click="addFavorite"/>
+            <Icon class="heart" name="ph:heart" size="2em" @click="addFavorite" :class="{ favorited: isFavorite }"/>
+            {{ userFavorites }}
             <p class="title">
                 {{ game?.name }}
             </p>
@@ -73,19 +74,39 @@ if(errorUserId){
     console.log(errorUserId)
 }
 
+const userFavorites = ref(userId.value.favorites);
+const isFavorite = ref(true);
+
+console.log(isFavorite.value);
+
+watch(isFavorite, async (newValue, oldValue) => {
+  console.log(toRaw(newValue));
+})
+
+
 const id = userId.value.id;
 const idString = id.toString();
 
-console.log(toRaw(props.game.slug));
-
 const addFavorite = (async () => {
-    const {error} = await useFetch(`/api/${idString}/favorites/${props.game.slug}/favorite`, ({
+    const {data} = await useFetch(`/api/${idString}/favorites/${props.game.slug}/favorite`, ({
         method: 'PATCH',
         body: {
           favorites: props.game.slug,
         },
     }))
+    console.log(toRaw(data.value.favorites));
+
+    if(data){
+      userFavorites.value = data.value.favorites;
+      if(userFavorites.value.includes(props.game.slug)){
+        isFavorite.value = true;
+      }else{
+        isFavorite.value = false;
+      }
+    }
 })
+
+
 </script>
 
 <style lang="scss">
@@ -140,7 +161,16 @@ const addFavorite = (async () => {
           top: 15px;
           right: 20px;
           color: #ff6000;
+          transition: all 0.150s ease;
+
+          &:hover{
+            cursor: pointer;
+            transform: scale(1.1);
+          }
         }
+        .favorited{
+            background-color: #ff6000;
+          }
 
         .title{
           font-size: 30px;
