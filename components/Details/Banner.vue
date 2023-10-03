@@ -7,8 +7,8 @@
           </p>
         </div>
         <div class="details-game">
-            <Icon class="heart" name="ph:heart" size="2em" @click="addFavorite" :class="{ favorited: isFavorite }"/>
-            {{ userFavorites }}
+            <Icon v-if="!isFavorite" class="heart" name="ph:heart" size="2em" @click="addFavorite"/>
+            <Icon v-else class="heart" name="ph:heart-fill" size="2em" @click="addFavorite"/>
             <p class="title">
                 {{ game?.name }}
             </p>
@@ -49,14 +49,9 @@
                   </p>
               </div>
             </div>
-            <div class="buy-or-cart">
-            <NuxtLink class="cart">
-                <Icon name="solar:cart-large-4-outline" size="1.8em"/>
-            </NuxtLink>
             <NuxtLink class="buy" :to="game?.website" v-if="game?.website">
                 Buy Now
             </NuxtLink>
-            </div>
         </div>
     </div>
 </template>
@@ -75,14 +70,20 @@ if(errorUserId){
 }
 
 const userFavorites = ref(userId.value.favorites);
-const isFavorite = ref(true);
+const isFavorite = ref(null);
+
+if(userFavorites.value.includes(props.game.slug)){
+  isFavorite.value = true;
+}
+else{
+  isFavorite.value = false;
+}
 
 console.log(isFavorite.value);
 
 watch(isFavorite, async (newValue, oldValue) => {
   console.log(toRaw(newValue));
 })
-
 
 const id = userId.value.id;
 const idString = id.toString();
@@ -100,13 +101,12 @@ const addFavorite = (async () => {
       userFavorites.value = data.value.favorites;
       if(userFavorites.value.includes(props.game.slug)){
         isFavorite.value = true;
-      }else{
+      }
+      else{
         isFavorite.value = false;
       }
     }
 })
-
-
 </script>
 
 <style lang="scss">
@@ -161,6 +161,7 @@ const addFavorite = (async () => {
           top: 15px;
           right: 20px;
           color: #ff6000;
+          fill: red;
           transition: all 0.150s ease;
 
           &:hover{
@@ -168,9 +169,6 @@ const addFavorite = (async () => {
             transform: scale(1.1);
           }
         }
-        .favorited{
-            background-color: #ff6000;
-          }
 
         .title{
           font-size: 30px;
@@ -249,53 +247,31 @@ const addFavorite = (async () => {
           }
         }
 
-        .buy-or-cart{
+        .buy{
+          width: 80%;
+          height: 60px;
+          background-color: #ff6000;
           display: flex;
           justify-content: center;
-          column-gap: 10px;
-          width: 80%;
+          align-items: center;
+          border-radius: 8px;
+          font-size: 1.3em;
+          font-weight: 600;
+          cursor: pointer;
+          color: #d4d4d4;
+          text-decoration: none;
+          transition: all 0.150s ease;
 
-          .cart{
-            width: 150px;
-            height: 60px;
-            background-color: #ff6000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 8px;
-            cursor: pointer;
-
-            @media screen and (max-width: 650px) {
-              flex: 1;              
-            }
-
-            svg{
-              color: #d4d4d4;
-              font-size: 1.3em;
-            }
+          &:hover{
+              transform: scale(1.05);
           }
 
-          .buy{
-            flex: auto;
-            height: 60px;
-            background-color: #ff6000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 8px;
-            font-size: 1.3em;
-            font-weight: 600;
-            cursor: pointer;
-            color: #d4d4d4;
-            text-decoration: none;  
+          &:visited{
+              color:#d4d4d4;
+          }
 
-            &:visited{
-                color:#d4d4d4;
-            }
-
-            &:focus{
-                color:#d4d4d4;
-            }
+          &:focus{
+              color:#d4d4d4;
           }
         }
       }
