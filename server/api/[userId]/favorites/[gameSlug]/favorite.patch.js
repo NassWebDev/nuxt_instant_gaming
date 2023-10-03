@@ -5,22 +5,37 @@ const prisma = new PrismaClient()
 export default defineEventHandler(async (event) => {
     const {gameSlug, userId} = event.context.params;
 
-    if(error){
+    const user = await prisma.user.findUnique({
+        where: {
+            id: parseInt(userId),
+        },
+    });
+
+    if (!user) {
         throw createError({
-            statusCode: 412,
-            statusMessage: error.message
-        })
+          statusCode: error.value.statusCode,
+          message: error.value.statusMessage,
+        });
+    }
+    
+    let updatedFavorites;
+
+    if (user.favorites.includes(gameSlug)) {
+        updatedFavorites = user.favorites.filter((slug) => slug !== gameSlug);
+    }
+    else {
+        updatedFavorites = [...user.favorites, gameSlug];
     }
 
     const favorite = await prisma.user.update({
         where: {
-            userId
+            id: parseInt(userId),
         },
         data: {
-            favorites: {
-                push: gameSlug
-            }
+            favorites: updatedFavorites
         }
     })
+
+    console.log(user.favorites);
     return favorite;
 })
