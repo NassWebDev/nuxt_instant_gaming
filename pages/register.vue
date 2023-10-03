@@ -1,6 +1,5 @@
 <template>
-    <div class="login-container">
-        <div class="login">
+    <div class="register">
             <NuxtLink class="logo" to="/" />
             <div class="form">
                 <h1>
@@ -24,13 +23,11 @@
                 </form>
             </div>
         </div>
-        <img src="../assets/images/instant-gaming-connexion.jpg" alt="">
-    </div>
 </template>
 
 <script setup>
 definePageMeta({
-    layout: false,
+    layout: "log",
 });
 
 useHead({
@@ -80,13 +77,7 @@ const signUp = (async () => {
     filter: invert(0.5);
 }
 
-.login-container {
-    width: 100%;
-    height: 100vh;
-    background-color: #323232;
-    display: flex;
-
-    .login {
+    .register {
         width: 50%;
         height: 100%;
         display: flex;
@@ -183,15 +174,4 @@ const signUp = (async () => {
             width: 100%;
         }
     }
-
-    img{
-        width: 50%;
-        object-fit: cover;
-        transition: all 0.3s ease;
-
-        @media screen and (max-width: 1000px) {
-            display: none;
-        }
-    }
-}
 </style>

@@ -1,45 +1,42 @@
 <template>
-    <div class="login-container">
-        <div class="login">
-            <NuxtLink class="logo" to="/" />
-            <div class="form">
-                <h1>
-                    Log In
-                </h1>
-                <div class="login-buttons">
-                    <button v-for="provider in provider" :key="provider.provider" @click="loginSocial(provider.provider)" :style="{ backgroundColor: provider?.bgcolor, color: provider?.color }">
-                        <Icon :name="provider.icon" size="1.5em" :color="provider?.color" />
-                    </button>
-                </div>
-                <div class="separator">
-                    <p>
-                        or
-                    </p>
-                </div>
-                <form @submit.prevent>
-                    <input type="text" placeholder="Email" v-model="email"/>
-                    <input type="password" placeholder="Password" v-model="password"/>
-                    <button @click="loginEmail">
-                        Send
-                    </button>
-                    <div class="no-account-forgot">
-                        <NuxtLink to="/register">
-                            No account ?
-                        </NuxtLink>
-                        <NuxtLink>
-                            Lost password ?
-                        </NuxtLink>
-                    </div>
-                </form>
+    <div class="login">
+        <NuxtLink class="logo" to="/" />
+        <div class="form">
+            <h1>
+                Log In
+            </h1>
+            <div class="login-buttons">
+                <button v-for="provider in provider" :key="provider.provider" @click="loginSocial(provider.provider)" :style="{ backgroundColor: provider?.bgcolor, color: provider?.color }">
+                    <Icon :name="provider.icon" size="1.5em" :color="provider?.color" />
+                </button>
             </div>
+            <div class="separator">
+                <p>
+                    or
+                </p>
+            </div>
+            <form @submit.prevent>
+                <input type="text" placeholder="Email" v-model="email"/>
+                <input type="password" placeholder="Password" v-model="password"/>
+                <button @click="loginEmail">
+                    Send
+                </button>
+                <div class="no-account-forgot">
+                    <NuxtLink to="/register">
+                        No account ?
+                    </NuxtLink>
+                    <NuxtLink>
+                        Lost password ?
+                    </NuxtLink>
+                </div>
+            </form>
         </div>
-        <img src="../assets/images/instant-gaming-connexion.jpg" alt="">
     </div>
 </template>
 
 <script setup>
 definePageMeta({
-    layout: false,
+    layout: "log",
 });
 
 useHead({
@@ -95,17 +92,7 @@ const loginSocial = (async (provider) => {
 </script>
 
 <style lang="scss">
-.overflow-hidden {
-  overflow: hidden;
-}
-
-.login-container {
-    width: 100%;
-    height: 100vh;
-    background-color: #323232;
-    display: flex;
-
-    .login {
+.login {
         width: 50%;
         height: 100%;
         display: flex;
@@ -239,25 +226,14 @@ const loginSocial = (async (provider) => {
 
                         &:hover{
                             color: #ff6000;
-                        }
                     }
                 }
             }
         }
-
-        @media screen and (max-width: 1000px) {
-            width: 100%;
-        }
     }
 
-    img{
-        width: 50%;
-        object-fit: cover;
-        transition: all 0.3s ease;
-
-        @media screen and (max-width: 1000px) {
-            display: none;
-        }
+    @media screen and (max-width: 1000px) {
+        width: 100%;
     }
 }
 </style>
