@@ -3,7 +3,7 @@
         <NuxtLink class="logo" to="/" />
         <div class="nav-middle">
             <ul>
-                <NuxtLink to="/populaires"> 
+                <NuxtLink to="/popular"> 
                     Popular
                 </NuxtLink>
                 <NuxtLink to="/next-release">
