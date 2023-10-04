@@ -96,11 +96,7 @@ const loginSocial = (async (provider) => {
         if (errorFetch) {
         console.log(errorFetch);
         }
-        // else{
-        //     return navigateTo("/");
-        // }
     }
-    console.log(data);
 });
 </script>
 
