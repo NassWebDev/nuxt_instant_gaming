@@ -11,6 +11,9 @@ export default defineEventHandler(async (event) => {
     where: {
       gameSlug: gameSlug,
     },
+    orderBy: {
+      createdAt: 'desc',
+    }
   })
 
   if (!comment) {
