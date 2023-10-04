@@ -9,7 +9,7 @@
         <h3>
           Popular
         </h3>
-        <NuxtLink to="/populaires">
+        <NuxtLink to="/popular">
           See All
         </NuxtLink>
       </div>
