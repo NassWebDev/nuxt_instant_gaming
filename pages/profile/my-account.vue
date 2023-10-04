@@ -113,6 +113,10 @@ const removeFavorite = (async(slug) => {
             align-items: center;
             row-gap: 20px;
 
+            @media screen and (max-width: 650px) {
+                width: 90%;
+            }
+
             .list-games{
                 width: 100%;
                 display: flex;
@@ -129,6 +133,11 @@ const removeFavorite = (async(slug) => {
                     border: 2px solid #3d3d3d;
                     border-radius: 5px;
                     position: relative;
+
+                    @media screen and (max-width: 400px) {
+                        flex-direction: column;
+                        align-items: center;
+                    }
 
                     svg{
                         position: absolute;
@@ -163,6 +172,10 @@ const removeFavorite = (async(slug) => {
                                 font-size: 16px;
                                 color: #999;
                             }
+                        }
+
+                        @media screen and (max-width: 400px) {
+                            align-items: center;
                         }
                     }
                 }
