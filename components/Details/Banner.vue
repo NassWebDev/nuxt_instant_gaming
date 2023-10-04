@@ -79,8 +79,6 @@ else{
   isFavorite.value = false;
 }
 
-console.log(isFavorite.value);
-
 watch(isFavorite, async (newValue, oldValue) => {
   console.log(toRaw(newValue));
 })
