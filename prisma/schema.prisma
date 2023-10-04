@@ -7,24 +7,24 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
+model user {
     id                Int      @id @default(autoincrement())
     userName          String
     email             String   @unique
     dateOfBirth       String
     favorites         String[] @default([])
-    comments          Comment[]
+    comments          comment[]
     createdAt         DateTime @default(now())
     updatedAt         DateTime @updatedAt
 }
 
-model Comment {
+model comment {
     id              Int      @id @default(autoincrement())
     text            String
     userName        String?
     gameSlug        String
     createdAt       DateTime @default(now())
     updatedAt       DateTime @updatedAt
-    user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    user            user     @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId          Int
 }
