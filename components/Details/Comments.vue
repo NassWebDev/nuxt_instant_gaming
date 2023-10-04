@@ -8,16 +8,24 @@
         <button @click="addComment">
             Submit your review
         </button>
-        <ul>
-            <li v-for="comment in comments" :key="comment.id">
-              <p class="username">
-                {{ comment.userName}}
-              </p>
+        <ul v-if="allcomments.length">
+            <li v-for="comment in allcomments" :key="comment.id">
+              <div class="comment-info">
+                <p class="username">
+                    {{ comment.userName}}
+                </p>
+                <p>
+                    {{ new Date(comment.createdAt).toISOString().split('T')[0] }}
+                </p>
+              </div>
               <p>
                 {{ comment.text }}
               </p>
             </li>
         </ul>
+        <p v-else>
+            No comments. Add one.
+        </p>
     </div>
 </template>
 
@@ -40,7 +48,7 @@ const id = userId.value.id;
 const idString = id.toString();
 
 const addComment = (async () => {
-    const { errorComment } = await useFetch(`/api/${idString}/comments/${props.slug}/comment`, {
+    const { error: errorComment } = await useFetch(`/api/${idString}/comments/${props.slug}/comment`, {
         method: 'POST',
         body: {
             text: comment.value,
@@ -53,10 +61,28 @@ const addComment = (async () => {
     comment.value = '';
 })
 
-const { errorGetComments, data: comments } = await useFetch(`/api/${idString}/comments/${props.slug}/comment`)
-if(errorUserId){
-    console.log(errorGetComments)
-}
+const allcomments = ref([]);
+
+const { error, data: comments } = await useFetch(`/api/${idString}/comments/${props.slug}/comment`);
+allcomments.value = comments.value;
+
+const supabase = useSupabaseClient();
+
+const insert = supabase
+    .channel('custom-all-channel')
+    .on(
+        'postgres_changes',
+    {
+        event: '*',
+        schema: 'public',
+        table: 'comment',
+    },
+    (payload) => {
+        allcomments.value.unshift(payload.new);
+        console.log(toRaw(allcomments.value));
+    }
+    ).subscribe();
+
 </script>
 
 <style lang="scss">
@@ -112,10 +138,15 @@ if(errorUserId){
             padding: 20px;
             list-style: none;
 
-            .username{
-                font-weight: bold;
+            .comment-info{
+                display: flex;
+                justify-content: space-between;
                 border-bottom: 2px solid #636363;
                 padding-bottom: 5px;
+
+                .username{
+                    font-weight: bold;
+                }
             }
         }
     }
