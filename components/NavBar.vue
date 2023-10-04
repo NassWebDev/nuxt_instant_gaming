@@ -12,12 +12,16 @@
             </ul>
             <input type="text">
         </div>
-        <div class="icons">
-            <Icon name="solar:cart-large-4-outline" size="1.8em"/>
-            <NuxtLink to="/profile/login" v-if="!isLoggedIn">
-                <Icon name="mdi-light:account" size="2em" />
+        <div class="icons" v-if="!isLoggedIn">
+            <NuxtLink to="/profile/login">
+                <Icon name="mdi-light:account" size="2.4em" />
             </NuxtLink>
-            <Icon name="tabler:logout" size="2em" v-else @click="logout"/>
+        </div>
+        <div class="icons" v-else>
+            <NuxtLink to="/profile/my-account">
+                <Icon name="mdi-light:account" size="2.4em" />
+            </NuxtLink>
+            <Icon name="streamline:interface-logout-arrow-exit-frame-leave-logout-rectangle-right" size="1.5em" @click="logout"/>
         </div>
     </header>
 </template>
@@ -32,7 +36,6 @@ const logout = async () => {
     if (error) {
         console.log(error);
     }
-    return navigateTo("/profile/login");
 }
 </script>
 
@@ -110,7 +113,7 @@ const logout = async () => {
         }
 
         .icons{
-            width: 200px;
+            width: 150px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -121,6 +124,10 @@ const logout = async () => {
 
             @media screen and (max-width: 1000px) {
                 width: 95px;
+            }
+
+            a{
+                color: #fff;
             }
         }
     }
