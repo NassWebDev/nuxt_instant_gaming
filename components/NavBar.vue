@@ -14,7 +14,7 @@
         </div>
         <div class="icons">
             <Icon name="solar:cart-large-4-outline" size="1.8em"/>
-            <NuxtLink to="/login" v-if="!isLoggedIn">
+            <NuxtLink to="/profile/login" v-if="!isLoggedIn">
                 <Icon name="mdi-light:account" size="2em" />
             </NuxtLink>
             <Icon name="tabler:logout" size="2em" v-else @click="logout"/>
@@ -32,7 +32,7 @@ const logout = async () => {
     if (error) {
         console.log(error);
     }
-    return navigateTo("/login");
+    return navigateTo("/profile/login");
 }
 </script>
 
