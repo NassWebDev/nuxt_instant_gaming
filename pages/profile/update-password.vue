@@ -11,7 +11,7 @@
                     Send
                 </button>
                 <div class="back">
-                    <NuxtLink to="/login">
+                    <NuxtLink to="/profile/login">
                         Back
                     </NuxtLink>
                 </div>
@@ -56,7 +56,7 @@ const sendEmail = (async () => {
     if(error){
         console.log(error);
     }
-    navigateTo('/login');
+    navigateTo('/profile/login');
 })
 </script>
 

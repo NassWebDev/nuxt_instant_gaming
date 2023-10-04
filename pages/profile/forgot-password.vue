@@ -10,7 +10,7 @@
                         Send
                     </button>
                     <div class="back">
-                        <NuxtLink to="/login">
+                        <NuxtLink to="/profile/login">
                             Back
                         </NuxtLink>
                     </div>

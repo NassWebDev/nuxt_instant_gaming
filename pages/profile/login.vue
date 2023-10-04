@@ -21,10 +21,10 @@
                     Send
                 </button>
                 <div class="no-account-forgot">
-                    <NuxtLink to="/register">
+                    <NuxtLink to="/profile/register">
                         No account ?
                     </NuxtLink>
-                    <NuxtLink to="/forgot-password">
+                    <NuxtLink to="/profile/forgot-password">
                         Lost password ?
                     </NuxtLink>
                 </div>
@@ -67,6 +67,7 @@ const email = ref('');
 const password = ref('');
 
 const supabase = useSupabaseClient();
+const user = useSupabaseUser();
 
 const loginEmail = (async () => {
     const { error } = await supabase.auth.signInWithPassword({
@@ -80,12 +81,26 @@ const loginEmail = (async () => {
 })
 
 const loginSocial = (async (provider) => {
-    const { error } = await supabase.auth.signInWithOAuth({
+    const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider
     })
-    if (error) {
-        console.log(error);
+    if(!error){
+        const {errorFetch} = await useFetch('/api/user/user', {
+            method: 'POST',
+            body: {
+                email: 'no-email',
+                userName: 'no-username',
+                dateOfBirth: '00-00-0000'
+            }
+        })
+        if (errorFetch) {
+        console.log(errorFetch);
+        }
+        // else{
+        //     return navigateTo("/");
+        // }
     }
+    console.log(data);
 });
 </script>
 
