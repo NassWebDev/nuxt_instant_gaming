@@ -73,6 +73,10 @@ else{
             background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.8));
             pointer-events: none;
         }
+
+        @media screen and (max-width: 1000px) {
+            aspect-ratio: 11/5;
+        }
     }
 
     .no-image{
