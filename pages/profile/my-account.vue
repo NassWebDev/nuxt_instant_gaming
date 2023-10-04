@@ -161,7 +161,7 @@ const removeFavorite = (async(slug) => {
                             li{
                                 list-style: none;
                                 font-size: 16px;
-                                color: #6b6b6b;
+                                color: #999;
                             }
                         }
                     }
