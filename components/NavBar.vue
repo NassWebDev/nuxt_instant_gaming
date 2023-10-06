@@ -27,6 +27,9 @@
 </template>
 
 <script setup>
+import { useRoute } from '#vue-router';
+const route = useRoute();
+
 const isLoggedIn = useSupabaseUser();
 
 const supabase = useSupabaseClient();
@@ -35,6 +38,9 @@ const logout = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
         console.log(error);
+    }
+    if(route.fullPath === '/profile/my-account'){
+        navigateTo('/profile/login');
     }
 }
 </script>
