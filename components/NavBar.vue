@@ -40,7 +40,7 @@ const logout = async () => {
     if (error) {
         console.log(error);
     }
-    if(route.fullPath === '/profile/my-account'){
+    if(route.fullPath === '/profile/my-account' || route.fullPath.includes('game')) {
         navigateTo('/profile/login');
     }
 }
