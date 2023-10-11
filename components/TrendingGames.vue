@@ -1,6 +1,6 @@
 <template>
     <!-- <div v-if="image" class="imageTrending" :style="{ backgroundImage: 'url(' + image + ')' }"> -->
-    <NuxtImg quality="40" format="webp" size="sm:50vw" loading="lazy" v-if="image" :src="image" alt="imageTrending"/>
+    <NuxtImg quality="40" format="webp" sizes="xl:100vw lg:100vw md:100vw sm:100vw xs:100vw" loading="lazy" v-if="image" :src="image" alt="imageTrending"/>
     <div v-else class="no-image">
       <p>
         No Image
