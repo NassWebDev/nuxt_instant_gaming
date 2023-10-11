@@ -26,9 +26,6 @@ definePageMeta({
 
 useHead({
     title: 'Register',
-    htmlAttrs: {
-        lang: 'en'
-    }
 })
 
 const email = ref('');
