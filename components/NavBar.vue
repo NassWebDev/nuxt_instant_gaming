@@ -1,6 +1,6 @@
 <template>
     <header>
-        <NuxtLink class="logo" to="/" />
+        <NuxtLink class="logo" to="/" aria-label="logo"/>
         <ul>
             <li>
                 <NuxtLink to="/popular"> 
@@ -14,12 +14,12 @@
             </li>
         </ul>
         <div class="icons" v-if="!isLoggedIn">
-            <NuxtLink to="/profile/login">
+            <NuxtLink to="/profile/login" aria-label="login">
                 <Icon name="mdi-light:account" size="2.4em" />
             </NuxtLink>
         </div>
         <div class="icons" v-else>
-            <NuxtLink to="/profile/my-account">
+            <NuxtLink to="/profile/my-account" aria-label="account">
                 <Icon name="mdi-light:account" size="2.4em" />
             </NuxtLink>
             <Icon name="streamline:interface-logout-arrow-exit-frame-leave-logout-rectangle-right" size="1.5em" @click="logout"/>
