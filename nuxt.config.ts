@@ -10,5 +10,8 @@ export default defineNuxtConfig({
   css: [`@/assets/styles/reset.css`],
   supabase: {
     redirect: false,
+  },
+  image: {
+    domains: ['media.rawg.io'],
   }
 })
