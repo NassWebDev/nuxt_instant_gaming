@@ -2,12 +2,16 @@
     <header>
         <NuxtLink class="logo" to="/" />
         <ul>
-            <NuxtLink to="/popular"> 
-                Popular
-            </NuxtLink>
-            <NuxtLink to="/next-release">
-                Next Releases
-            </NuxtLink>
+            <li>
+                <NuxtLink to="/popular"> 
+                    Popular
+                </NuxtLink>
+            </li>
+            <li>
+                <NuxtLink to="/next-release">
+                    Next Releases
+                </NuxtLink>
+            </li>
         </ul>
         <div class="icons" v-if="!isLoggedIn">
             <NuxtLink to="/profile/login">
@@ -79,11 +83,15 @@ const logout = async () => {
                 display: none;
             }
 
-            a{
-                font-size: 20px;
-                color: #e8e8e8;
-                text-decoration: none;
+            li{
+                list-style: none;
                 z-index: 1;
+
+                a{
+                    font-size: 18px;
+                    color: #e8e8e8;
+                    text-decoration: none;
+                }
             }
         }
 
