@@ -1,6 +1,6 @@
 <template>
     <div class="banner">
-        <NuxtImg v-if="game?.image" :src="game?.image" alt="" />
+        <NuxtImg quality="40" format="webp" size="sm:50vw" loading="lazy" v-if="game?.image" :src="game?.image" alt="" />
         <div v-else class="no-image">
           <p>
             No Image
