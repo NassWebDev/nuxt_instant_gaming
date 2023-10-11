@@ -13,5 +13,12 @@ export default defineNuxtConfig({
   },
   image: {
     domains: ['media.rawg.io'],
+  },
+  app: {
+    head:{
+      htmlAttrs:{
+        lang: 'en',
+      }
+    }
   }
 })
