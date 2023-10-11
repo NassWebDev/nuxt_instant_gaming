@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.0.0-rc.3",
-    "@nuxt/kit": "^3.7.4",
     "joi": "^17.10.2",
     "nuxt-precompress": "^0.5.9",
     "vue-awesome-paginate": "^1.1.46",
@@ -30,8 +29,5 @@
   "prisma": {
     "seed": "node prisma/seed.js"
   },
-  "type": "module",
-  "resolutions": {
-    "nuxt/kit": "^3.7.4"
-  }
+  "type": "module"
 }
