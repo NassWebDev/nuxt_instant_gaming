@@ -1,17 +1,14 @@
 <template>
     <header>
         <NuxtLink class="logo" to="/" />
-        <div class="nav-middle">
-            <ul>
-                <NuxtLink to="/popular"> 
-                    Popular
-                </NuxtLink>
-                <NuxtLink to="/next-release">
-                    Next Releases
-                </NuxtLink>
-            </ul>
-            <input type="text">
-        </div>
+        <ul>
+            <NuxtLink to="/popular"> 
+                Popular
+            </NuxtLink>
+            <NuxtLink to="/next-release">
+                Next Releases
+            </NuxtLink>
+        </ul>
         <div class="icons" v-if="!isLoggedIn">
             <NuxtLink to="/profile/login">
                 <Icon name="mdi-light:account" size="2.4em" />
@@ -74,47 +71,19 @@ const logout = async () => {
             }
         }
 
-        .nav-middle{
-            width: 500px;
+        ul{
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            row-gap: 15px;
+            column-gap: 50px;
 
             @media screen and (max-width: 1000px) {
-                width: 40%;
+                display: none;
             }
 
-            ul{
-                display: flex;
-                column-gap: 50px;
-
-                @media screen and (max-width: 1000px) {
-                    display: none;
-                }
-
-                a{
-                    color: #e8e8e8;
-                    text-decoration: none;
-                    z-index: 1;
-                }
-            }
-
-            input{
-                width: 100%;
-                height: 40px;
-                border-radius: 10px;
-                border: solid 1px black;
+            a{
+                font-size: 20px;
+                color: #e8e8e8;
+                text-decoration: none;
                 z-index: 1;
-
-                @media screen and (max-width: 1000px) {
-                    width: 80%;
-                }
-
-                @media screen and (max-width: 500px) {
-                    width: 60%;
-                }
             }
         }
 
