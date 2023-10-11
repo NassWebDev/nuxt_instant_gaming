@@ -1,6 +1,6 @@
 <template>
-    <div v-if="image" class="imageTrending" :style="{ backgroundImage: 'url(' + image + ')' }">
-    </div>
+    <!-- <div v-if="image" class="imageTrending" :style="{ backgroundImage: 'url(' + image + ')' }"> -->
+    <NuxtImg quality="40" format="webp" size="sm:50vw" loading="lazy" v-if="image" :src="image"/>
     <div v-else class="no-image">
       <p>
         No Image
@@ -57,9 +57,9 @@ else{
 </script>
 
 <style lang="scss" scoped>
-    .imageTrending{
+    img{
         width: 100%;
-        background-size: cover;
+        object-fit: cover;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
         aspect-ratio: 16/5;
 
