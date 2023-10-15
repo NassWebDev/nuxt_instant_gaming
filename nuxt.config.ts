@@ -21,7 +21,7 @@ export default defineNuxtConfig({
       },
       meta: [
         {
-          name: 'viewport',
+          name: 'description',
           content: 'A sort of clone of Instant Gaming.'
         }
       ]
