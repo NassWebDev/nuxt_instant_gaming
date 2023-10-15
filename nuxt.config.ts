@@ -18,7 +18,13 @@ export default defineNuxtConfig({
     head:{
       htmlAttrs:{
         lang: 'en',
-      }
+      },
+      meta: [
+        {
+          name: 'viewport',
+          content: 'A sort of clone of Instant Gaming.'
+        }
+      ]
     }
   }
 })
