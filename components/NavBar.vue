@@ -55,9 +55,21 @@ const logout = async () => {
         align-items: center;
         padding: 10px 20px;
         transition: all 0.150s ease;
+        z-index: 999;
 
         @media screen and (max-width: 850px) {
             padding: 10px;
+        }
+
+        &::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 150%;
+            margin-left: -20px;
+            margin-top: -20px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+            z-index: -1;
         }
 
         .logo{
@@ -111,6 +123,14 @@ const logout = async () => {
 
             a{
                 color: #fff;
+            }
+            
+            svg{
+                cursor: pointer;
+                transition: all 0.150s ease;
+                &:hover{
+                    transform: scale(1.2);
+                }       
             }
         }
     }
