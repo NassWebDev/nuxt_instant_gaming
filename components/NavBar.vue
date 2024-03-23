@@ -70,6 +70,10 @@ const logout = async () => {
             margin-top: -20px;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
             z-index: -1;
+
+            @media screen and (max-width: 850px) {
+                margin-left: -10px;
+            }
         }
 
         .logo{
@@ -124,7 +128,7 @@ const logout = async () => {
             a{
                 color: #fff;
             }
-            
+
             svg{
                 cursor: pointer;
                 transition: all 0.150s ease;
