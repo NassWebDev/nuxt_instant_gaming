@@ -1,7 +1,7 @@
 <template>
   <div class="container-games">
     <TrendingGames
-    thegame="horizon-zero-dawn-2"
+      slug="horizon-zero-dawn-2"
     />
     <div class="games">
       <div class="headline">
