@@ -69,6 +69,14 @@ const password = ref('');
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
+const router = useRouter();
+const route = useRoute();
+
+const navigateBack = () => {
+  router.go(-1)
+}
+console.log(router);
+
 const loginEmail = (async () => {
     const { error } = await supabase.auth.signInWithPassword({
         email: email.value,
@@ -77,7 +85,7 @@ const loginEmail = (async () => {
     if (error) {
         console.log(error);
     }
-    return navigateTo("/");
+    navigateBack();         
 })
 
 const loginSocial = (async (provider) => {
@@ -97,7 +105,8 @@ const loginSocial = (async (provider) => {
         console.log(errorFetch);
         }
     }
-});
+    console.log(data);
+}); 
 </script>
 
 <style lang="scss">
