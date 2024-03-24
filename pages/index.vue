@@ -1,8 +1,7 @@
 <template>
   <div class="container-games">
-    <TrendingGames 
-      ordering="-added"
-      dates="2021-01-01,2023-09-25"
+    <TrendingGames
+    thegame="horizon-zero-dawn-2"
     />
     <div class="games">
       <div class="headline">
@@ -17,7 +16,7 @@
         <GamesList
           :number_of_games="9"
           ordering="-added"
-          dates="2021-01-01,2023-09-25"
+          dates="2021-01-01,2024-03-24"
         />
       </div>
     </div>
