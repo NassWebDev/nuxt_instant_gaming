@@ -14,23 +14,41 @@ const router = useRouter();
 
 const image = ref(null);
 
+const trendingGame = ref(null);
+
 const props = defineProps({
     ordering: String,
-    dates: String
+    dates: String,
+    thegame: String
 })
 
-const { data: trendingGame } = await useFetch(`https://api.rawg.io/api/games`, {
-    method: "GET",
-    headers:{
-        "Content-Type": "application/json",
-        "token": `Token ${import.meta.env.VITE_ACCESS_TOKEN}`,
-    },
-    params:{
-        key: import.meta.env.VITE_API_KEY,
-        ordering: props?.ordering,
-        dates: props?.dates
-    }
-})
+if (props.thegame) {
+    const { data: aGame } = await useFetch(`https://api.rawg.io/api/games/${props.thegame}`, {
+        method: "GET",
+        headers:{
+            "Content-Type": "application/json",
+            "token": `Token ${import.meta.env.VITE_ACCESS_TOKEN}`,
+        },
+        params:{
+            key: import.meta.env.VITE_API_KEY
+        }
+    })
+    trendingGame.value = aGame.value;
+    console.log(trendingGame.value);
+}
+
+const { data: allTrendingGames } = await useFetch(`https://api.rawg.io/api/games`, {
+        method: "GET",
+        headers:{
+            "Content-Type": "application/json",
+            "token": `Token ${import.meta.env.VITE_ACCESS_TOKEN}`,
+        },
+        params:{
+            key: import.meta.env.VITE_API_KEY,
+            ordering: props.ordering,
+            dates: props.dates
+        }
+    })
 
 const { data: game } = await useFetch(`https://api.rawg.io/api/games/${route.params.slug}`, {
     method: "GET",
@@ -43,15 +61,21 @@ const { data: game } = await useFetch(`https://api.rawg.io/api/games/${route.par
     }
 })
 
+console.log(allTrendingGames.value?.results[0]);
+
 if(router.currentRoute.value.path === `/game/${route.params.slug}`){
     image.value = game.value?.background_image_additional;
 }
+else if(props.thegame){
+    console.log(trendingGame.value);
+    image.value = trendingGame.value?.background_image;
+}
 else{
-    if(trendingGame.value?.results[0]?.background_image_additional){
-        image.value = trendingGame.value?.results[0]?.background_image_additional;
+    if(allTrendingGames.value?.results[0]?.background_image_additional){
+        image.value = allTrendingGames.value?.results[0]?.background_image_additional;
     }
     else{
-        image.value = trendingGame.value?.results[0]?.background_image;
+        image.value = allTrendingGames.value?.results[0]?.background_image;
     }
 }
 </script>
