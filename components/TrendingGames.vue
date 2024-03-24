@@ -1,6 +1,7 @@
 <template>
     <!-- <div v-if="image" class="imageTrending" :style="{ backgroundImage: 'url(' + image + ')' }"> -->
-    <NuxtImg quality="40" format="webp" sizes="xl:100vw lg:100vw md:100vw sm:100vw xs:100vw" v-if="image" :src="image" alt="imageTrending"/>
+    <NuxtImg quality="40" format="webp" sizes="xl:100vw lg:100vw md:100vw sm:100vw xs:100vw" v-if="image && !slug" :src="image" alt="imageTrending"/>
+    <img v-else-if="slug" src="../assets/images/horizon-forbidden-west.jpg" alt="imageTrending" @click="goToGame" class="horizon"/>
     <div v-else class="no-image">
       <p>
         No Image
@@ -19,8 +20,13 @@ const trendingGame = ref(null);
 const props = defineProps({
     ordering: String,
     dates: String,
-    thegame: String
+    thegame: String,
+    slug: String
 })
+
+const goToGame = () => {
+    router.push(`/game/horizon-zero-dawn-2`);
+}
 
 if (props.thegame) {
     const { data: aGame } = await useFetch(`https://api.rawg.io/api/games/${props.thegame}`, {
@@ -64,7 +70,7 @@ const { data: game } = await useFetch(`https://api.rawg.io/api/games/${route.par
 console.log(allTrendingGames.value?.results[0]);
 
 if(router.currentRoute.value.path === `/game/${route.params.slug}`){
-    image.value = game.value?.background_image_additional;
+    image.value = game.value?.background_image;
 }
 else if(props.thegame){
     console.log(trendingGame.value);
@@ -85,7 +91,6 @@ else{
         width: 100%;
         object-fit: cover;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
-        aspect-ratio: 16/5;
 
         &::before{
             content: "";
@@ -101,6 +106,10 @@ else{
         @media screen and (max-width: 1000px) {
             aspect-ratio: 11/5;
         }
+    }
+
+    .horizon{
+        cursor: pointer;
     }
 
     .no-image{
