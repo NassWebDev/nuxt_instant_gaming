@@ -107,6 +107,7 @@ const logout = async () => {
                     font-size: 18px;
                     color: #e8e8e8;
                     text-decoration: none;
+                    font-weight: bold;
                 }
             }
         }
