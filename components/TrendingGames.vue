@@ -90,7 +90,8 @@ else{
     img{
         width: 100%;
         object-fit: cover;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+        clip-path: polygon(0 25%, 100% 25%, 100% 100%, 0 85%);
+        margin-top: -15%;
 
         &::before{
             content: "";
